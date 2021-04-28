@@ -2,9 +2,11 @@ package com.berteodosio.seriemesmo.presentation.home.view
 
 import android.os.Bundle
 import com.berteodosio.seriemesmo.R
+import com.berteodosio.seriemesmo.domain.usecase.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.show
+import com.berteodosio.seriemesmo.presentation.home.adapter.HomeShowsAdapter
 import com.berteodosio.seriemesmo.presentation.home.presenter.HomePresenter
 import kotlinx.android.synthetic.main.activity_home.*
 import org.kodein.di.Kodein
@@ -13,6 +15,8 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
 class HomeActivity : BaseAppCompatActivity<HomePresenter>(), HomeView {
+
+    private val showsAdapter by lazy { HomeShowsAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +28,15 @@ class HomeActivity : BaseAppCompatActivity<HomePresenter>(), HomeView {
         bind<BasePresenter>() with provider { HomePresenter(this@HomeActivity, instance()) }
     }
 
+    override fun initialize() {
+        shows_recycler?.adapter = showsAdapter
+    }
+
     override fun showLoading() {
         home_loading?.show()
     }
 
+    override fun displayShow(show: Show) {
+        showsAdapter.addShow(show)
+    }
 }

@@ -11,11 +11,18 @@ class HomePresenter(private val view: HomeView,
 ) : BasePresenter() {
 
     fun onInitialize() {
+        view.initialize()
+        fetchShows()
+    }
+
+    private fun fetchShows() {
         view.showLoading()
         val disposable = fetchPopularShowsUseCase
             .execute()
             .setupCommonSchedulers()
-            .subscribe({ AppLogger.i("FetchShows", "Show fetched: ${it.name}") }, { AppLogger.e("FetchShows", "An error happened while fetching shows", it) })
+            .subscribe(
+                { AppLogger.i("FetchShows", "Show fetched: ${it.name}"); view.displayShow(it) },
+                { AppLogger.e("FetchShows", "An error happened while fetching shows", it) })
 
         addDisposable(disposable)
     }
