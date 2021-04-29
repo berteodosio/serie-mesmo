@@ -20,5 +20,8 @@ data class TmdbShow(
     var voteAverage: Double,
 
     @SerializedName("backdrop_path")
-    var backdropPath: String
+    var backdropPath: String,
+
+    @SerializedName("genres")
+    var genres: List<TmdbGenre>?
 )

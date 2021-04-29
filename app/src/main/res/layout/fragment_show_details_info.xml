@@ -7,6 +7,7 @@
     android:background="#E1E1E1">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/show_details_info_summary_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,8 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
             <TextView
                 android:id="@+id/summary_title"
@@ -43,6 +44,50 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 tools:text="Aiuhguidhgdsu igdhsiugs giudsg usid gsuigsiugeigehiue iuea taeuit aehit aeiuta aituh tiuatuiat ait aiut atiua tiua tuai tauit auit aiut ai taiu tat iata aituht aiu taiut aiu aituht iua aiutahit uai taiut auit auithaui fuifauiae htuiaethauitheauithauitehfdkjfqeoigew goiwg w groifophjr rjp " />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/show_details_info_genres_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/show_details_info_summary_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/genres_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/show_details_info_genres_card_title"
+                android:textAllCaps="true" />
+
+            <View
+                style="@style/CardSimpleLine"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/show_genres_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                tools:text="Crime | Drama" />
 
         </LinearLayout>
 

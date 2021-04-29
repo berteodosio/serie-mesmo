@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.berteodosio.seriemesmo.R
+import com.berteodosio.seriemesmo.domain.useCase.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseFragment
 import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsInfoPresenter
@@ -29,21 +30,31 @@ class ShowDetailsInfoFragment : BaseFragment<ShowDetailsInfoPresenter>(), ShowDe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val showOverview = arguments?.getString(ARGUMENT_OVERVIEW) ?: ""
-        presenter.onInitialize(showOverview)
+        val show = arguments?.getParcelable<Show?>(ARGUMENT_SHOW)
+        presenter.onInitialize(show)
     }
 
-    override fun displayShowDetails(showOverview: String) {
-        show_overview_text?.text = showOverview
+    override fun displayShowDetails(show: Show) {
+        show_overview_text?.text = show.overview
+        show_genres_text?.text = createGenresListText(show.genres)
+    }
+
+    private fun createGenresListText(genres: List<String>): String {
+        if (genres.isEmpty()) return ""
+
+        if (genres.size == 1) return genres.first()
+
+        // TODO: improve this
+        return genres.first() + genres.drop(1).map { " | $it" }.joinToString { it }
     }
 
     companion object {
 
-        private const val ARGUMENT_OVERVIEW = "ARGUMENT_OVERVIEW"
+        private const val ARGUMENT_SHOW = "ARGUMENT_SHOW"
 
-        fun newInstance(showOverView: String) = ShowDetailsInfoFragment().apply {
+        fun newInstance(show: Show) = ShowDetailsInfoFragment().apply {
             arguments = Bundle().apply {
-                putString(ARGUMENT_OVERVIEW, showOverView)
+                putParcelable(ARGUMENT_SHOW, show)
             }
         }
     }

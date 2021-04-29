@@ -15,7 +15,7 @@ class ShowDetailsAdapter(
     override fun getItem(position: Int): Fragment {
         // TODO: improve this code
         return if (position % 2 == 0) {
-            ShowDetailsInfoFragment.newInstance(showOverView = show.overview)
+            ShowDetailsInfoFragment.newInstance(show)
         } else {
             ShowDetailsSeasonsFragment.newInstance()
         }
