@@ -4,14 +4,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.PagerAdapter
+import com.berteodosio.seriemesmo.domain.useCase.model.Show
 
-class ShowDetailsAdapter(fragmentManager: FragmentManager) :
+class ShowDetailsAdapter(
+    private val show: Show,
+    fragmentManager: FragmentManager
+) :
     FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getItem(position: Int): Fragment {
         // TODO: improve this code
         return if (position % 2 == 0) {
-            ShowDetailsInfoFragment.newInstance()
+            ShowDetailsInfoFragment.newInstance(showOverView = show.overview)
         } else {
             ShowDetailsSeasonsFragment.newInstance()
         }

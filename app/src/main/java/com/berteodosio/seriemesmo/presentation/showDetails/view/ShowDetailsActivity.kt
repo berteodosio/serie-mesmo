@@ -16,7 +16,6 @@ import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsPresenter
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_show_details.*
@@ -65,7 +64,7 @@ class ShowDetailsActivity : BaseAppCompatActivity<ShowDetailsPresenter>(), ShowD
     }
 
     private fun setupTabs(show: Show) {
-        val adapter = ShowDetailsAdapter(supportFragmentManager)
+        val adapter = ShowDetailsAdapter(show, supportFragmentManager)
         show_details_viewpager?.adapter = adapter
         // TODO: check commented code
 //        show_details_viewpager?.addOnPageChangeListener(ViewPagerOnPageSelectedListener { onPageSelected(adapter.get(it)) })
