@@ -1,3 +1,6 @@
+# Prevent file with API KEY from being comitted
+secure.properties
+
 # Created by https://www.gitignore.io/api/android,intellij,java,gradle,osx,crashlytics
 
 ### Android ###

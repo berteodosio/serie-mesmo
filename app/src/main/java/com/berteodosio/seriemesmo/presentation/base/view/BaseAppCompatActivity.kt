@@ -4,6 +4,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.berteodosio.seriemesmo.AppApplication
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -18,7 +19,7 @@ abstract class BaseAppCompatActivity<T : BasePresenter> : AppCompatActivity(), K
     private val applicationKodein by closestKodein()
 
     override val kodein: Kodein = Kodein.lazy {
-        extend(applicationKodein)
+        extend(AppApplication.kodein)
         import(activityModule())
     }
 

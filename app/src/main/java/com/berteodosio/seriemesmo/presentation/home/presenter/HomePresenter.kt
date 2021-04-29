@@ -1,7 +1,8 @@
 package com.berteodosio.seriemesmo.presentation.home.presenter
 
-import com.berteodosio.seriemesmo.domain.usecase.base.setupCommonSchedulers
-import com.berteodosio.seriemesmo.domain.usecase.show.FetchPopularShowsUseCase
+import com.berteodosio.seriemesmo.domain.useCase.base.setupCommonSchedulers
+import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.home.view.HomeView
@@ -22,8 +23,13 @@ class HomePresenter(private val view: HomeView,
             .setupCommonSchedulers()
             .subscribe(
                 { AppLogger.i("FetchShows", "Show fetched: ${it.name}"); view.displayShow(it) },
-                { AppLogger.e("FetchShows", "An error happened while fetching shows", it) })
+                { AppLogger.e("FetchShows", "An error happened while fetching shows", it) },        // TODO: show error
+                { view.hideLoading()})
 
         addDisposable(disposable)
+    }
+
+    fun onShowClick(show: Show) {
+        view.navigateToShowDetailsScreen(showId = show.id)
     }
 }

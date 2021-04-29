@@ -1,4 +1,4 @@
-package com.berteodosio.seriemesmo.domain.usecase.base
+package com.berteodosio.seriemesmo.domain.useCase.base
 
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger

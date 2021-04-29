@@ -17,5 +17,8 @@ data class TmdbShow(
     var posterPath: String,
 
     @SerializedName("vote_average")
-    var voteAverage: Double
+    var voteAverage: Double,
+
+    @SerializedName("backdrop_path")
+    var backdropPath: String
 )
