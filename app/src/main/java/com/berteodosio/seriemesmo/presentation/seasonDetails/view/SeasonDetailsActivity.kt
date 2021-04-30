@@ -51,6 +51,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity<SeasonDetailsPresenter>(), S
     private fun setupToolbar(seasonName: String) {
         setSupportActionBar(season_details_toolbar)
         season_details_toolbar?.title = seasonName
+        title = seasonName
     }
 
     override fun showLoading() {
