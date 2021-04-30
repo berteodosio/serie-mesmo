@@ -3,4 +3,5 @@
 
     <string name="show_details_info_summary_card_title">Summary</string>
     <string name="show_details_info_genres_card_title">Genres</string>
+    <string name="show_details_info_details_card_title">Details</string>
 </resources>

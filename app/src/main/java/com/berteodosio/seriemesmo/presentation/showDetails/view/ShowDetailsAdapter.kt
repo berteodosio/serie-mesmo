@@ -17,7 +17,7 @@ class ShowDetailsAdapter(
         return if (position % 2 == 0) {
             ShowDetailsInfoFragment.newInstance(show)
         } else {
-            ShowDetailsSeasonsFragment.newInstance()
+            ShowDetailsSeasonsFragment.newInstance(show)
         }
     }
 

@@ -11,16 +11,22 @@ data class Show(
     val posterUrl: String,
     val voteAverage: Double,
     val backdropUrl: String,
-    val genres: List<String>
+    val genres: List<String>,
+    val status: String,
+    val originalLanguage: String,
+    val seasons: List<Season>
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readDouble(),
-        parcel.readString()!!,
-        parcel.createStringArrayList()!!
+        parcel.readString() ?: "",
+        parcel.createStringArrayList() ?: emptyList(),
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.createTypedArrayList(Season) ?: emptyList()
     ) {
     }
 
@@ -32,6 +38,9 @@ data class Show(
         parcel.writeDouble(voteAverage)
         parcel.writeString(backdropUrl)
         parcel.writeStringList(genres)
+        parcel.writeString(status)
+        parcel.writeString(originalLanguage)
+        parcel.writeTypedList(seasons)
     }
 
     override fun describeContents(): Int {

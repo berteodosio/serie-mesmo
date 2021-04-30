@@ -9,13 +9,16 @@ import com.berteodosio.seriemesmo.domain.useCase.model.Show
 fun TmdbShow.toShow(): Show {
     val baseImageUrl = "https://www.themoviedb.org/t/p/w1280"
     return Show(
-        id = this.id,
-        name = this.name,
-        overview = this.overview,
-        voteAverage = this.voteAverage,
+        id = this.id ?: 0L,
+        name = this.name ?: "",
+        overview = this.overview ?: "",
+        voteAverage = this.voteAverage ?: 0.0,
         posterUrl = "$baseImageUrl${this.posterPath}",
         backdropUrl = "$baseImageUrl${this.backdropPath}",
-        genres = mapGenres(this.genres)
+        genres = mapGenres(this.genres),
+        status = this.status ?: "",
+        originalLanguage = this.originalLanguage ?: "",
+        seasons = this.seasons?.map { it.toSeason() } ?: emptyList()
     )
 }
 

@@ -37,6 +37,11 @@ class ShowDetailsInfoFragment : BaseFragment<ShowDetailsInfoPresenter>(), ShowDe
     override fun displayShowDetails(show: Show) {
         show_overview_text?.text = show.overview
         show_genres_text?.text = createGenresListText(show.genres)
+        show_details_text?.text = mountDetailsText(show)
+    }
+
+    private fun mountDetailsText(show: Show): String {
+        return "Status: ${show.status}\nOriginal Language: ${show.originalLanguage}"        // TODO EXTRACT STRING RESOURCE
     }
 
     private fun createGenresListText(genres: List<String>): String {
