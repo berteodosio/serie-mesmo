@@ -1,4 +1,4 @@
-package com.berteodosio.seriemesmo.domain.useCase.model
+package com.berteodosio.seriemesmo.domain.model
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -6,11 +6,15 @@ import android.os.Parcelable
 data class Season(
     val name: String,
     val posterUrl: String,
-    val episodeCount: Long
+    val episodeCount: Long,
+    val episodes: List<Episode>,
+    val number: Long
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
+        parcel.readLong(),
+        parcel.createTypedArrayList(Episode) ?: emptyList(),
         parcel.readLong()
     ) {
     }
@@ -19,6 +23,8 @@ data class Season(
         parcel.writeString(name)
         parcel.writeString(posterUrl)
         parcel.writeLong(episodeCount)
+        parcel.writeTypedList(episodes)
+        parcel.writeLong(number)
     }
 
     override fun describeContents(): Int {
@@ -34,4 +40,5 @@ data class Season(
             return arrayOfNulls(size)
         }
     }
+
 }

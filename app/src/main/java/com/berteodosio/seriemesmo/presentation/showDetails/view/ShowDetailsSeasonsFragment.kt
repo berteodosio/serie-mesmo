@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.domain.useCase.model.Season
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Season
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseFragment
+import com.berteodosio.seriemesmo.presentation.seasonDetails.view.SeasonDetailsActivity
 import com.berteodosio.seriemesmo.presentation.showDetails.adapter.ShowDetailsSeasonsAdapter
 import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsSeasonsPresenter
 import kotlinx.android.synthetic.main.fragment_show_details_seasons.*
@@ -39,9 +40,18 @@ class ShowDetailsSeasonsFragment : BaseFragment<ShowDetailsSeasonsPresenter>(),
         presenter.onInitialize(show)
     }
 
+    override fun initialize() {
+        showDetailsSeasonsAdapter.addOnClickListener { presenter.onSeasonClick(it) }
+    }
+
     override fun displaySeasons(seasons: List<Season>) {
         seasons_recycler?.adapter = showDetailsSeasonsAdapter
         showDetailsSeasonsAdapter.addSeasons(seasons)
+    }
+
+    override fun navigateToSeasonDetailsScreen(season: Season, showId: Long) {
+        val context = this.context ?: return
+        startActivity(SeasonDetailsActivity.newIntent(context, showId, season.number, season.name))
     }
 
     companion object {

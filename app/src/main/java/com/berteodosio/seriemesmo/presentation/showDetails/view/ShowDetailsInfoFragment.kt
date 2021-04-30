@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseFragment
 import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsInfoPresenter

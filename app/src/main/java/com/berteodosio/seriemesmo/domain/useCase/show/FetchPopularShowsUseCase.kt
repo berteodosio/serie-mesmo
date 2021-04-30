@@ -1,16 +1,15 @@
 package com.berteodosio.seriemesmo.domain.useCase.show
 
-import com.berteodosio.seriemesmo.data.show.repository.ShowRepository
-import com.berteodosio.seriemesmo.data.tmdb.model.TmdbShow
+import com.berteodosio.seriemesmo.data.tmdb.repository.TmdbRepository
 import com.berteodosio.seriemesmo.domain.useCase.base.BaseUseCase
-import com.berteodosio.seriemesmo.domain.useCase.mapper.toShow
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.mapper.toShow
+import com.berteodosio.seriemesmo.domain.model.Show
 import io.reactivex.Observable
 
-class FetchPopularShowsUseCase(private val showRepository: ShowRepository) : BaseUseCase() {
+class FetchPopularShowsUseCase(private val tmdbRepository: TmdbRepository) : BaseUseCase() {
 
     fun execute(): Observable<Show> {
-        return showRepository
+        return tmdbRepository
             .fetchPopularShows()
             .map { it.toShow() }
     }

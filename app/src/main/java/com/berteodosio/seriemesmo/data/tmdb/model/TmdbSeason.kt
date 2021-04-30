@@ -10,5 +10,10 @@ data class TmdbSeason(
     var posterPath: String?,
 
     @SerializedName("episode_count")
-    var episodeCount: Long?
+    var episodeCount: Long?,
+
+    var episodes: List<TmdbEpisode>?,
+
+    @SerializedName("season_number")
+    var seasonNumber: Long?
 )

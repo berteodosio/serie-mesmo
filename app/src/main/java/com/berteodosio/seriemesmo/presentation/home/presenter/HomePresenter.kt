@@ -1,7 +1,7 @@
 package com.berteodosio.seriemesmo.presentation.home.presenter
 
 import com.berteodosio.seriemesmo.domain.useCase.base.setupCommonSchedulers
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
@@ -22,7 +22,7 @@ class HomePresenter(private val view: HomeView,
             .execute()
             .setupCommonSchedulers()
             .subscribe(
-                { AppLogger.i("FetchShows", "Show fetched: ${it.name}"); view.displayShow(it) },
+                { AppLogger.d("FetchShows", "Show fetched: ${it.name}"); view.displayShow(it) },
                 { AppLogger.e("FetchShows", "An error happened while fetching shows", it) },        // TODO: show error
                 { view.hideLoading()})
 

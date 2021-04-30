@@ -2,7 +2,7 @@ package com.berteodosio.seriemesmo.presentation.home.view
 
 import android.os.Bundle
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.hide

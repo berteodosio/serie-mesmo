@@ -1,4 +1,4 @@
-package com.berteodosio.seriemesmo.domain.useCase.model
+package com.berteodosio.seriemesmo.domain.model
 
 import android.os.Parcel
 import android.os.Parcelable

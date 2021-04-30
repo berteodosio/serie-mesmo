@@ -9,7 +9,7 @@ import android.os.Bundle
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.TAG
@@ -79,12 +79,7 @@ class ShowDetailsActivity : BaseAppCompatActivity<ShowDetailsPresenter>(), ShowD
         Glide.with(this)
             .load(show.backdropUrl)
             .transition(DrawableTransitionOptions.withCrossFade().clone())
-            .apply(
-                RequestOptions()
-                    .centerCrop()
-//                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                    .skipMemoryCache(true)
-            )
+            .apply(RequestOptions().centerCrop())
             .into(cover_image)
 
 //        animatedUpdateColor(newColorRes = candidate.color)

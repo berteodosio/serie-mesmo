@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.domain.useCase.model.Show
+import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.custom.view.inflate
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
 import io.reactivex.subjects.PublishSubject
