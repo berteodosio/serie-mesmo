@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Episode
 import com.berteodosio.seriemesmo.presentation.custom.view.inflate
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_season_details.view.*
 
 class SeasonDetailsAdapter : RecyclerView.Adapter<SeasonDetailsAdapter.ViewHolder>() {
 
     private val episodes: MutableList<Episode> = mutableListOf()
+    private val episodeClickListener: PublishSubject<Episode> = PublishSubject.create()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.item_season_details))
@@ -27,11 +29,16 @@ class SeasonDetailsAdapter : RecyclerView.Adapter<SeasonDetailsAdapter.ViewHolde
         notifyDataSetChanged()
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun setOnClickListener(action: (Episode) -> Unit) {
+        episodeClickListener.subscribe(action)
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun onBind(episode: Episode) {
             itemView.episode_number?.text = episode.number.toString()
             itemView.episode_title?.text = episode.name
+            itemView.setOnClickListener { episodeClickListener.onNext(episode) }
         }
 
     }

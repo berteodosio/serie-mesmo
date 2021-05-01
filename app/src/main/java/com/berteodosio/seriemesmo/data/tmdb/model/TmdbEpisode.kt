@@ -13,5 +13,8 @@ data class TmdbEpisode(
     var overview: String?,
 
     @SerializedName("air_date")
-    var airDate: String?
+    var airDate: String?,
+
+    @SerializedName("still_path")
+    var stillPath: String?
 )

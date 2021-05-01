@@ -1,5 +1,6 @@
 package com.berteodosio.seriemesmo.presentation.seasonDetails.presenter
 
+import com.berteodosio.seriemesmo.domain.model.Episode
 import com.berteodosio.seriemesmo.domain.useCase.base.setupCommonSchedulers
 import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
@@ -38,5 +39,10 @@ class SeasonDetailsPresenter(
                 })      // TODO properly handle error
 
         addDisposable(disposable)
+    }
+
+    fun onEpisodeClick(episode: Episode) {
+        view.navigateToEpisodeDetailsScreen(episodeName = episode.name, episodeOverview = episode.overview,
+            episodeCoverUrl = episode.episodeImageUrl, episodeAirDate = episode.airDate, episodeNumber = episode.number)
     }
 }

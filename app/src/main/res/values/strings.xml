@@ -8,4 +8,8 @@
 
     <!-- Season Details -->
     <string name="season_details_episodes">Episodes</string>
+
+    <!-- Episode Details -->
+    <string name="episode_details_info_summary_card_title">Summary</string>
+    <string name="episode_details_title">Episode %1$s</string>
 </resources>

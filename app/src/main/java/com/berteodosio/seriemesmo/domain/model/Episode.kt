@@ -7,10 +7,12 @@ data class Episode(
     val number: Long,
     val name: String,
     val overview: String,
-    val airDate: String
+    val airDate: String,
+    val episodeImageUrl: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: ""
@@ -22,6 +24,7 @@ data class Episode(
         parcel.writeString(name)
         parcel.writeString(overview)
         parcel.writeString(airDate)
+        parcel.writeString(episodeImageUrl)
     }
 
     override fun describeContents(): Int {

@@ -10,4 +10,7 @@ interface SeasonDetailsView {
 
     fun initialize(seasonName: String)
 
+    fun navigateToEpisodeDetailsScreen(episodeName: String, episodeOverview: String, episodeCoverUrl: String,
+                                       episodeAirDate: String, episodeNumber: Long)
+
 }

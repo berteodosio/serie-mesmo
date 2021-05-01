@@ -1,6 +1,7 @@
 package com.berteodosio.seriemesmo.data.tmdb.repository
 
 import com.berteodosio.seriemesmo.data.tmdb.TmdbApi
+import com.berteodosio.seriemesmo.data.tmdb.model.TmdbEpisode
 import com.berteodosio.seriemesmo.data.tmdb.model.TmdbSeason
 import com.berteodosio.seriemesmo.data.tmdb.model.TmdbShow
 import io.reactivex.Observable

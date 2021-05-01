@@ -9,6 +9,7 @@ import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
+import com.berteodosio.seriemesmo.presentation.episodeDetails.view.EpisodeDetailsActivity
 import com.berteodosio.seriemesmo.presentation.seasonDetails.adapter.SeasonDetailsAdapter
 import com.berteodosio.seriemesmo.presentation.seasonDetails.presenter.SeasonDetailsPresenter
 import com.bumptech.glide.Glide
@@ -46,6 +47,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity<SeasonDetailsPresenter>(), S
 
     override fun initialize(seasonName: String) {
         setupToolbar(seasonName)
+        seasonDetailsAdapter.setOnClickListener { presenter.onEpisodeClick(it) }
     }
 
     private fun setupToolbar(seasonName: String) {
@@ -71,6 +73,10 @@ class SeasonDetailsActivity : BaseAppCompatActivity<SeasonDetailsPresenter>(), S
             .transition(DrawableTransitionOptions.withCrossFade().clone())
             .apply(RequestOptions().centerCrop())
             .into(season_cover_image)
+    }
+
+    override fun navigateToEpisodeDetailsScreen(episodeName: String, episodeOverview: String, episodeCoverUrl: String, episodeAirDate: String, episodeNumber: Long) {
+        startActivity(EpisodeDetailsActivity.newIntent(this, episodeName, episodeOverview, episodeCoverUrl, episodeAirDate, episodeNumber))
     }
 
     companion object {

@@ -25,6 +25,8 @@
 
         <activity android:name=".presentation.seasonDetails.view.SeasonDetailsActivity" />
 
+        <activity android:name=".presentation.episodeDetails.view.EpisodeDetailsActivity" />
+
     </application>
 
 </manifest>
