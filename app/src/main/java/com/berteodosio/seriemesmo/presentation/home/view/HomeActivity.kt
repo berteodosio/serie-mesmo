@@ -31,6 +31,7 @@ class HomeActivity : BaseAppCompatActivity<HomePresenter>(), HomeView {
     }
 
     override fun initialize() {
+        setSupportActionBar(home_toolbar)
         shows_recycler?.adapter = showsAdapter
         showsAdapter.addOnShowClickListener { presenter.onShowClick(it) }
     }

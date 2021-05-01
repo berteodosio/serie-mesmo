@@ -51,7 +51,7 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    tools:title="Série Mesmo" />
+                    app:title=""/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/show_details_tablayout"
