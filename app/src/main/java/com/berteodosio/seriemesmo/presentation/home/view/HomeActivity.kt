@@ -18,7 +18,7 @@ import org.kodein.di.generic.provider
 
 class HomeActivity : BaseAppCompatActivity<HomePresenter>(), HomeView {
 
-    private val showsAdapter by lazy { HomeShowsAdapter() }
+    private val showsAdapter by lazy { HomeShowsAdapter(windowManager) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

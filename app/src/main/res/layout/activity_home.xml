@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/home_toolbar"
-        app:spanCount="3"
+        app:spanCount="2"
         tools:listitem="@layout/item_show_poster" />
 
     <ProgressBar
