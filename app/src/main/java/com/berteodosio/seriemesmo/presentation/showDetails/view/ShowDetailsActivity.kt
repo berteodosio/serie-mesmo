@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.berteodosio.seriemesmo.R
@@ -49,6 +51,13 @@ class ShowDetailsActivity : BaseAppCompatActivity<ShowDetailsPresenter>(), ShowD
         setupToolbar()
     }
 
+    private fun setupTabLayoutCustomFonts() {
+        for (i in 0..show_details_tablayout.tabCount) {
+            val inflatedTextView = LayoutInflater.from(this).inflate(R.layout.custom_textview_font,null) as? TextView?
+            show_details_tablayout.getTabAt(i)?.customView = inflatedTextView;
+        }
+    }
+
     private fun setupToolbar() {
         setSupportActionBar(show_details_toolbar)
     }
@@ -65,6 +74,7 @@ class ShowDetailsActivity : BaseAppCompatActivity<ShowDetailsPresenter>(), ShowD
 
     override fun displayShowDetails(show: Show) {
         setupTabs(show)
+        setupTabLayoutCustomFonts()
     }
 
     private fun setupTabs(show: Show) {

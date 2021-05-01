@@ -34,6 +34,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_summary_card_title"
                     android:textAllCaps="true" />
 
@@ -48,6 +49,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/montserrat"
                     tools:text="Aiuhguidhgdsu igdhsiugs giudsg usid gsuigsiugeigehiue iuea taeuit aehit aeiuta aituh tiuatuiat ait aiut atiua tiua tuai tauit auit aiut ai taiu tat iata aituht aiu taiut aiu aituht iua aiutahit uai taiut auit auithaui fuifauiae htuiaethauitheauithauitehfdkjfqeoigew goiwg w groifophjr rjp " />
 
             </LinearLayout>
@@ -78,6 +80,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_genres_card_title"
                     android:textAllCaps="true" />
 
@@ -92,6 +95,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/montserrat"
                     tools:text="Crime | Drama" />
 
             </LinearLayout>
@@ -124,6 +128,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_details_card_title"
                     android:textAllCaps="true" />
 
@@ -138,6 +143,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/montserrat"
                     tools:text="Status: XXXX\nOrigin Country: GB" />
 
             </LinearLayout>

@@ -13,7 +13,7 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/AppToolbarTheme"
         android:background="@color/colorPrimary"
         app:title="Série Mesmo" />
 

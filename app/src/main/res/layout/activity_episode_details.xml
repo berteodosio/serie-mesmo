@@ -50,7 +50,7 @@
                     android:layout_marginBottom="48dp"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:theme="@style/AppToolbarTheme"
                     tools:title="Episode 9" />
 
                 <TextView
@@ -62,8 +62,9 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:ellipsize="end"
+                    android:fontFamily="@font/montserrat"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     tools:text="From the Shadows" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -118,6 +119,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="16dp"
                             android:ellipsize="end"
+                            android:fontFamily="@font/montserrat"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0"
@@ -152,6 +154,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="16dp"
+                            android:fontFamily="@font/montserrat"
                             android:text="@string/episode_details_info_summary_card_title"
                             android:textAllCaps="true" />
 
@@ -166,6 +169,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/montserrat"
                             tools:text="Aiuhguidhgdsu igdhsiugs giudsg usid gsuigsiugeigehiue iuea taeuit aehit aeiuta aituh tiuatuiat ait aiut atiua tiua tuai tauit auit aiut ai taiu tat iata aituht aiu taiut aiu aituht iua aiutahit uai taiut auit auithaui fuifauiae htuiaethauitheauithauitehfdkjfqeoigew goiwg w groifophjr rjp " />
 
                     </LinearLayout>
