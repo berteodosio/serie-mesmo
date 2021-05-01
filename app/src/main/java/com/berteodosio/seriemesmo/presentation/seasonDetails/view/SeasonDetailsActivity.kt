@@ -9,6 +9,8 @@ import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
+import com.berteodosio.seriemesmo.presentation.custom.view.hide
+import com.berteodosio.seriemesmo.presentation.custom.view.show
 import com.berteodosio.seriemesmo.presentation.episodeDetails.view.EpisodeDetailsActivity
 import com.berteodosio.seriemesmo.presentation.seasonDetails.adapter.SeasonDetailsAdapter
 import com.berteodosio.seriemesmo.presentation.seasonDetails.presenter.SeasonDetailsPresenter
@@ -16,7 +18,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_season_details.*
-import kotlinx.android.synthetic.main.activity_show_details.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -57,7 +58,13 @@ class SeasonDetailsActivity : BaseAppCompatActivity<SeasonDetailsPresenter>(), S
     }
 
     override fun showLoading() {
-        // TODO("Not yet implemented")
+        season_details_recycler?.hide()
+        season_details_loading?.show()
+    }
+
+    override fun hideLoading() {
+        season_details_loading?.hide()
+        season_details_recycler?.show()
     }
 
     override fun displaySeasonDetails(season: Season) {

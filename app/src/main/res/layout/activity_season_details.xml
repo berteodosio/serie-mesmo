@@ -62,12 +62,22 @@
             android:background="#ffffff"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+            <ProgressBar
+                android:id="@+id/season_details_loading"
+                style="@style/AppLoading"
+                android:layout_marginTop="32dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/season_details_recycler"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

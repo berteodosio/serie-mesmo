@@ -28,7 +28,7 @@ class ShowDetailsPresenter(
             .execute(showId)
             .setupCommonSchedulers()
             .subscribe(
-                { show -> view.displayShowDetails(show)},
+                { show -> view.displayShowDetails(show); view.hideLoading() },
                 { e -> AppLogger.e(TAG, "Error fetching Show Details for $showId", e); view.hideLoading() }     // TODO: show error
             )
 

@@ -13,4 +13,6 @@ interface SeasonDetailsView {
     fun navigateToEpisodeDetailsScreen(episodeName: String, episodeOverview: String, episodeCoverUrl: String,
                                        episodeAirDate: String, episodeNumber: Long)
 
+    fun hideLoading()
+
 }

@@ -29,20 +29,24 @@ class SeasonDetailsPresenter(
             .execute(showId, seasonNumber)
             .setupCommonSchedulers()
             .subscribe(
-                { season -> view.displaySeasonDetails(season)},
+                { season -> view.displaySeasonDetails(season); view.hideLoading() },
                 { e ->
                     AppLogger.e(
                         TAG,
                         "Error loading season details",
                         e
                     )
+
+                    view.hideLoading()
                 })      // TODO properly handle error
 
         addDisposable(disposable)
     }
 
     fun onEpisodeClick(episode: Episode) {
-        view.navigateToEpisodeDetailsScreen(episodeName = episode.name, episodeOverview = episode.overview,
-            episodeCoverUrl = episode.episodeImageUrl, episodeAirDate = episode.airDate, episodeNumber = episode.number)
+        view.navigateToEpisodeDetailsScreen(
+            episodeName = episode.name, episodeOverview = episode.overview,
+            episodeCoverUrl = episode.episodeImageUrl, episodeAirDate = episode.airDate, episodeNumber = episode.number
+        )
     }
 }
