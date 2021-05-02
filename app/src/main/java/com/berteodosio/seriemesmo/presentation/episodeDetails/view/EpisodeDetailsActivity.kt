@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
-import com.berteodosio.seriemesmo.presentation.episodeDetails.presenter.EpisodeDetailsViewState
+import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewState
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModel
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModelFactory
 import kotlinx.android.synthetic.main.activity_episode_details.*

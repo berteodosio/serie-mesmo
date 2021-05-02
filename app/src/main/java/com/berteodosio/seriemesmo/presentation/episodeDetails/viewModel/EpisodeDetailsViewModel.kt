@@ -3,7 +3,6 @@ package com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
-import com.berteodosio.seriemesmo.presentation.episodeDetails.presenter.EpisodeDetailsViewState
 
 class EpisodeDetailsViewModel(
     private val episodeName: String,

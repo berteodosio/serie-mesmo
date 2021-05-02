@@ -1,4 +1,4 @@
-package com.berteodosio.seriemesmo.presentation.episodeDetails.presenter
+package com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel
 
 sealed class EpisodeDetailsViewState {
 
