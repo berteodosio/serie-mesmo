@@ -11,10 +11,7 @@ class SeasonDetailsViewModelFactory(
     private val fetchSeasonDetailsUseCase: FetchSeasonDetailsUseCase
 ) : ViewModelProvider.Factory {
 
-    // TODO: improve, avoid using reflection
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return modelClass
-            .getConstructor(Long::class.java, Long::class.java, String::class.java, FetchSeasonDetailsUseCase::class.java)
-            .newInstance(showId, seasonNumber, seasonName, fetchSeasonDetailsUseCase)
+        return SeasonDetailsViewModel(showId, seasonNumber, seasonName, fetchSeasonDetailsUseCase) as T
     }
 }

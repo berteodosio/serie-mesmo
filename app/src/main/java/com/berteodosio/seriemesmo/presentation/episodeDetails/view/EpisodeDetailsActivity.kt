@@ -3,22 +3,17 @@ package com.berteodosio.seriemesmo.presentation.episodeDetails.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
-import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
-import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivityWithPresenter
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
-import com.berteodosio.seriemesmo.presentation.episodeDetails.presenter.EpisodeDetailsPresenter
+import com.berteodosio.seriemesmo.presentation.episodeDetails.presenter.EpisodeDetailsViewState
+import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModel
+import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModelFactory
 import kotlinx.android.synthetic.main.activity_episode_details.*
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.provider
 
-class EpisodeDetailsActivity : BaseAppCompatActivityWithPresenter<EpisodeDetailsPresenter>(), EpisodeDetailsView {
-
-    override fun activityModule(): Kodein.Module = Kodein.Module("Episode Details Module") {
-        bind<BasePresenter>() with provider { EpisodeDetailsPresenter(this@EpisodeDetailsActivity) }
-    }
+class EpisodeDetailsActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +24,33 @@ class EpisodeDetailsActivity : BaseAppCompatActivityWithPresenter<EpisodeDetails
         val episodeCoverUrl = intent?.getStringExtra(EXTRA_COVER_URL) ?: ""
         val episodeAirDate = intent?.getStringExtra(EXTRA_AIR_DATE) ?: ""
         val episodeNumber = intent?.getLongExtra(EXTRA_EPISODE_NUMBER, INVALID_VALUE) ?: INVALID_VALUE
-        presenter.onInitialize(episodeName, episodeOverview, episodeCoverUrl, episodeAirDate, episodeNumber)
+
+        val viewModel: EpisodeDetailsViewModel by viewModels {
+            EpisodeDetailsViewModelFactory(
+                episodeName,
+                episodeOverview,
+                episodeCoverUrl,
+                episodeAirDate,
+                episodeNumber
+            )
+        }
+        viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
     }
 
-    override fun initialize() {
-        setSupportActionBar(episode_details_toolbar)
+    private fun onViewStateChanged(viewState: EpisodeDetailsViewState) = when (viewState) {
+        is EpisodeDetailsViewState.Idle -> {
+            setSupportActionBar(episode_details_toolbar)
+            displayEpisodeDetails(
+                viewState.episodeName,
+                viewState.episodeOverview,
+                viewState.episodeCoverUrl,
+                viewState.episodeAirDate,
+                viewState.episodeNumber
+            )
+        }
     }
 
-    override fun displayEpisodeDetails(
+    private fun displayEpisodeDetails(
         name: String,
         overview: String,
         coverUrl: String,
@@ -48,6 +62,7 @@ class EpisodeDetailsActivity : BaseAppCompatActivityWithPresenter<EpisodeDetails
         episode_time?.text = airDate
         episode_cover_image?.loadCenterCrop(coverUrl)
 
+        // TODO fix warning
         val episodeNumberText = getString(R.string.episode_details_title, "$number")
         episode_details_toolbar?.title = episodeNumberText
         title = episodeNumberText
@@ -63,7 +78,14 @@ class EpisodeDetailsActivity : BaseAppCompatActivityWithPresenter<EpisodeDetails
 
         private const val INVALID_VALUE = -1L
 
-        fun newIntent(context: Context, name: String, overview: String, coverUrl: String, airDate: String, episodeNumber: Long) =
+        fun newIntent(
+            context: Context,
+            name: String,
+            overview: String,
+            coverUrl: String,
+            airDate: String,
+            episodeNumber: Long
+        ) =
             Intent(context, EpisodeDetailsActivity::class.java)
                 .putExtra(EXTRA_NAME, name)
                 .putExtra(EXTRA_OVERVIEW, overview)
