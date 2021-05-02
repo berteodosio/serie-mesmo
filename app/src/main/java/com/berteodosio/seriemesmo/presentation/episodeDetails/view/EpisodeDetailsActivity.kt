@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
+import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivityWithPresenter
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
 import com.berteodosio.seriemesmo.presentation.episodeDetails.presenter.EpisodeDetailsPresenter
 import kotlinx.android.synthetic.main.activity_episode_details.*
@@ -13,7 +14,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.provider
 
-class EpisodeDetailsActivity : BaseAppCompatActivity<EpisodeDetailsPresenter>(), EpisodeDetailsView {
+class EpisodeDetailsActivity : BaseAppCompatActivityWithPresenter<EpisodeDetailsPresenter>(), EpisodeDetailsView {
 
     override fun activityModule(): Kodein.Module = Kodein.Module("Episode Details Module") {
         bind<BasePresenter>() with provider { EpisodeDetailsPresenter(this@EpisodeDetailsActivity) }

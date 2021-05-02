@@ -5,6 +5,7 @@ import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
+import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivityWithPresenter
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
 import com.berteodosio.seriemesmo.presentation.custom.view.show
 import com.berteodosio.seriemesmo.presentation.home.adapter.HomeShowsAdapter
@@ -16,7 +17,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-class HomeActivity : BaseAppCompatActivity<HomePresenter>(), HomeView {
+class HomeActivity : BaseAppCompatActivityWithPresenter<HomePresenter>(), HomeView {
 
     private val showsAdapter by lazy { HomeShowsAdapter(windowManager) }
 

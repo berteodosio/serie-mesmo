@@ -14,6 +14,7 @@ import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
+import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivityWithPresenter
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
@@ -28,7 +29,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-class ShowDetailsActivity : BaseAppCompatActivity<ShowDetailsPresenter>(), ShowDetailsView {
+class ShowDetailsActivity : BaseAppCompatActivityWithPresenter<ShowDetailsPresenter>(), ShowDetailsView {
 
     override fun activityModule(): Kodein.Module = Kodein.Module("Show Details Module") {
         bind<BasePresenter>() with provider {
