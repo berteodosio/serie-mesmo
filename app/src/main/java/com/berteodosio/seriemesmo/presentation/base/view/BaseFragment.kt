@@ -5,10 +5,5 @@ import com.berteodosio.seriemesmo.AppApplication
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 
-abstract class BaseFragment : Fragment(), KodeinAware {
-
-    override val kodein: Kodein = Kodein.lazy {
-        extend(AppApplication.kodein)           // TODO: check this
-    }
-
-}
+// Not useful today but may be useful in the future
+abstract class BaseFragment : Fragment()

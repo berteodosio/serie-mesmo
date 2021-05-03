@@ -4,17 +4,14 @@ import com.berteodosio.seriemesmo.data.tmdb.model.TmdbGenre
 import com.berteodosio.seriemesmo.data.tmdb.model.TmdbShow
 import com.berteodosio.seriemesmo.domain.model.Show
 
-
-// TODO: refactor
 fun TmdbShow.toShow(): Show {
-    val baseImageUrl = "https://www.themoviedb.org/t/p/w1280"
     return Show(
         id = this.id ?: 0L,
         name = this.name ?: "",
         overview = this.overview ?: "",
         voteAverage = this.voteAverage ?: 0.0,
-        posterUrl = "$baseImageUrl${this.posterPath}",
-        backdropUrl = "$baseImageUrl${this.backdropPath}",
+        posterUrl = "${TmdbConfig.IMAGE_URL_PREFIX}${this.posterPath}",
+        backdropUrl = "${TmdbConfig.IMAGE_URL_PREFIX}${this.backdropPath}",
         genres = mapGenres(this.genres),
         status = this.status ?: "",
         originalLanguage = this.originalLanguage ?: "",

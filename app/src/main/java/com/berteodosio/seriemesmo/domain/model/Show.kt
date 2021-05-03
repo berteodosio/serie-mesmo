@@ -3,7 +3,6 @@ package com.berteodosio.seriemesmo.domain.model
 import android.os.Parcel
 import android.os.Parcelable
 
-// TODO: take a look at parcelable nullable
 data class Show(
     val id: Long,
     val name: String,

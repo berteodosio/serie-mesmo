@@ -17,9 +17,6 @@ import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetails
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsSeasonsViewModelFactory
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsSeasonsViewState
 import kotlinx.android.synthetic.main.fragment_show_details_seasons.*
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.provider
 
 class ShowDetailsSeasonsFragment : BaseFragment() {
 

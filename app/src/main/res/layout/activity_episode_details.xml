@@ -71,7 +71,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- TODO CHECK HEIGHT -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

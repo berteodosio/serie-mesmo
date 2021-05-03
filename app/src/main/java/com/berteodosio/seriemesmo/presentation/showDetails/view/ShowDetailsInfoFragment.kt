@@ -13,9 +13,6 @@ import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetails
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsInfoViewModelFactory
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsInfoViewState
 import kotlinx.android.synthetic.main.fragment_show_details_info.*
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.provider
 
 class ShowDetailsInfoFragment : BaseFragment() {
 

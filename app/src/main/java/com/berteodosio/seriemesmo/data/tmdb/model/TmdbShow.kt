@@ -2,7 +2,6 @@ package com.berteodosio.seriemesmo.data.tmdb.model
 
 import com.google.gson.annotations.SerializedName
 
-// TODO: consider all fields nullable
 data class TmdbShow(
     @SerializedName("id")
     var id: Long?,
