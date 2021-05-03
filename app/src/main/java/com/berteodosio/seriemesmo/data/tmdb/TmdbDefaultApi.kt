@@ -11,15 +11,9 @@ class TmdbDefaultApi : TmdbApi {
         .baseUrl(BASE_URL)
         .addConverterFactory(converter)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .apply { addLogInterceptor() }
         .build()
 
     override fun service(): TmdbService = retrofit(GsonConverterFactory.create()).create(TmdbService::class.java)
-
-    private fun Retrofit.Builder.addLogInterceptor() {
-        // if we want to add a log interceptor, use this code:
-        // client(OkHttpClient().newBuilder().addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build())
-    }
 
     companion object {
         const val BASE_URL = "https://api.themoviedb.org/3/tv/"

@@ -3,12 +3,13 @@ package com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.berteodosio.seriemesmo.domain.model.Episode
-import com.berteodosio.seriemesmo.domain.useCase.base.setupCommonSchedulers
 import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.hadilq.liveevent.LiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class SeasonDetailsViewModel(
     private val showId: Long,
@@ -26,6 +27,19 @@ class SeasonDetailsViewModel(
         get() = _navigationEvents
 
     init {
+        _viewState.value = SeasonDetailsViewState.Initial
+    }
+
+    /*
+     * The creation of this method was needed for testing purposes. We could've done
+     * the fetchSeasonDetails() call on the init block, but then it wouldn't be possible
+     * to test it.
+     */
+    fun onInitialization() {
+        if (_viewState.value != SeasonDetailsViewState.Initial) {
+            return
+        }
+
         fetchSeasonDetails()
     }
 
@@ -37,9 +51,11 @@ class SeasonDetailsViewModel(
         setLoadingState()
         val disposable = fetchSeasonDetailsUseCase
             .execute(showId, seasonNumber)
-            .setupCommonSchedulers()
+                // TODO: SETUP COMMON SCHEDULERS
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { season -> _viewState.value = SeasonDetailsViewState.SeasonLoaded(season) },
+                { season -> _viewState.value = SeasonDetailsViewState.DisplayingContent(season) },
                 { e ->
                     AppLogger.e(
                         TAG,

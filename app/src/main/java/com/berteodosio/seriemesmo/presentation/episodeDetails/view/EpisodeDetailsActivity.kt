@@ -38,7 +38,7 @@ class EpisodeDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun onViewStateChanged(viewState: EpisodeDetailsViewState) = when (viewState) {
-        is EpisodeDetailsViewState.Idle -> {
+        is EpisodeDetailsViewState.DisplayingContent -> {
             setSupportActionBar(episode_details_toolbar)
             displayEpisodeDetails(
                 viewState.episodeName,

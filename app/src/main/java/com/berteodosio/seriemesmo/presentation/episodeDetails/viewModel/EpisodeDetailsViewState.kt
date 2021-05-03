@@ -2,7 +2,7 @@ package com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel
 
 sealed class EpisodeDetailsViewState {
 
-    class Idle(
+    data class DisplayingContent(
         val episodeName: String,
         val episodeOverview: String,
         val episodeCoverUrl: String,

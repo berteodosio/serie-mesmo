@@ -4,9 +4,11 @@ import com.berteodosio.seriemesmo.domain.model.Season
 
 sealed class SeasonDetailsViewState {
 
-    class Loading(val seasonName: String) : SeasonDetailsViewState()
+    object Initial : SeasonDetailsViewState()
 
-    class SeasonLoaded(val season: Season) : SeasonDetailsViewState()
+    data class Loading(val seasonName: String) : SeasonDetailsViewState()
+
+    data class DisplayingContent(val season: Season) : SeasonDetailsViewState()
 
     class Error(e: Throwable) : SeasonDetailsViewState()
 

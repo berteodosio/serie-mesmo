@@ -44,6 +44,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 
         seasonDetailsAdapter.setOnClickListener(viewModel::onEpisodeClick)
+        viewModel.onInitialization()
     }
 
     private fun onNavigationEventReceived(event: SeasonDetailsNavigationEvent) {
@@ -60,11 +61,12 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
             setupTitle(viewState.seasonName)
             showLoading()
         }
-        is SeasonDetailsViewState.SeasonLoaded -> {
+        is SeasonDetailsViewState.DisplayingContent -> {
             displaySeasonDetails(viewState.season)
             hideLoading()
         }
         is SeasonDetailsViewState.Error -> { /* TODO: IMPLEMENT */ }
+        SeasonDetailsViewState.Initial -> Unit
     }
 
     private fun setupTitle(seasonName: String) {

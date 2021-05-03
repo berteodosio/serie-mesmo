@@ -18,11 +18,11 @@ class EpisodeDetailsViewModel(
         get() = _viewState
 
     init {
-        setIdleState()
+        setDisplayingContent()
     }
 
-    private fun setIdleState() {
-        _viewState.value = EpisodeDetailsViewState.Idle(episodeName, episodeOverview, episodeCoverUrl, episodeAirDate, episodeNumber)
+    private fun setDisplayingContent() {
+        _viewState.value = EpisodeDetailsViewState.DisplayingContent(episodeName, episodeOverview, episodeCoverUrl, episodeAirDate, episodeNumber)
     }
 
 }

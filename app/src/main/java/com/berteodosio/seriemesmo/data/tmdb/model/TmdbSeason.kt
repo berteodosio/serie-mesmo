@@ -12,6 +12,7 @@ data class TmdbSeason(
     @SerializedName("episode_count")
     var episodeCount: Long?,
 
+    @SerializedName("episodes")
     var episodes: List<TmdbEpisode>?,
 
     @SerializedName("season_number")
