@@ -8,10 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
-import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseFragment
-import com.berteodosio.seriemesmo.presentation.base.view.BaseFragmentWithPresenter
-import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsInfoPresenter
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsInfoViewModel
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsInfoViewModelFactory
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsInfoViewState

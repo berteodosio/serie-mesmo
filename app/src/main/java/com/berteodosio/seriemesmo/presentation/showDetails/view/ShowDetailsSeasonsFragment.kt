@@ -9,12 +9,9 @@ import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.domain.model.Show
-import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
 import com.berteodosio.seriemesmo.presentation.base.view.BaseFragment
-import com.berteodosio.seriemesmo.presentation.base.view.BaseFragmentWithPresenter
 import com.berteodosio.seriemesmo.presentation.seasonDetails.view.SeasonDetailsActivity
 import com.berteodosio.seriemesmo.presentation.showDetails.adapter.ShowDetailsSeasonsAdapter
-import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsSeasonsPresenter
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsSeasonsNavigationEvent
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsSeasonsViewModel
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsSeasonsViewModelFactory
