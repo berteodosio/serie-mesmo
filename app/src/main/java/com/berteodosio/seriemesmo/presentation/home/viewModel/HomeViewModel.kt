@@ -8,6 +8,7 @@ import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
+import com.hadilq.liveevent.LiveEvent
 
 class HomeViewModel(
     private val fetchPopularShowsUseCase: FetchPopularShowsUseCase
@@ -17,7 +18,7 @@ class HomeViewModel(
     val viewState: LiveData<HomeViewState>
         get() = _viewState
 
-    private val _navigationEvents = MutableLiveData<HomeNavigationEvent>()
+    private val _navigationEvents = LiveEvent<HomeNavigationEvent>()
     val navigationEvents: LiveData<HomeNavigationEvent>
         get() = _navigationEvents
 

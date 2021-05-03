@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
+import com.hadilq.liveevent.LiveEvent
 
 class ShowDetailsSeasonsViewModel(private val show: Show?) : BaseViewModel() {
 
@@ -12,7 +13,7 @@ class ShowDetailsSeasonsViewModel(private val show: Show?) : BaseViewModel() {
     val viewState: LiveData<ShowDetailsSeasonsViewState>
         get() = _viewState
 
-    private val _navigationEvents = MutableLiveData<ShowDetailsSeasonsNavigationEvent>()
+    private val _navigationEvents = LiveEvent<ShowDetailsSeasonsNavigationEvent>()
     val navigationEvents: LiveData<ShowDetailsSeasonsNavigationEvent>
         get() = _navigationEvents
 

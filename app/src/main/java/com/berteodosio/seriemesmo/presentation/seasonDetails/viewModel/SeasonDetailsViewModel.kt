@@ -8,6 +8,7 @@ import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCas
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
+import com.hadilq.liveevent.LiveEvent
 
 class SeasonDetailsViewModel(
     private val showId: Long,
@@ -20,7 +21,7 @@ class SeasonDetailsViewModel(
     val viewState: LiveData<SeasonDetailsViewState>
         get() = _viewState
 
-    private val _navigationEvents = MutableLiveData<SeasonDetailsNavigationEvent>()
+    private val _navigationEvents = LiveEvent<SeasonDetailsNavigationEvent>()
     val navigationEvents: LiveData<SeasonDetailsNavigationEvent>
         get() = _navigationEvents
 
