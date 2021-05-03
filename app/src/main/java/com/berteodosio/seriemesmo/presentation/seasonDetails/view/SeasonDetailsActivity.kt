@@ -33,6 +33,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_season_details)
+        setSupportActionBar(season_details_toolbar)
 
         val showId = intent?.getLongExtra(EXTRA_SHOW_ID, INVALID_VALUE) ?: INVALID_VALUE
         val seasonNumber = intent?.getLongExtra(EXTRA_SEASON_NUMBER, INVALID_VALUE) ?: INVALID_VALUE
@@ -56,7 +57,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
 
     private fun onViewStateChanged(viewState: SeasonDetailsViewState) = when (viewState) {
         is SeasonDetailsViewState.Loading -> {
-            setupToolbar(viewState.seasonName)
+            setupTitle(viewState.seasonName)
             showLoading()
         }
         is SeasonDetailsViewState.SeasonLoaded -> {
@@ -66,8 +67,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
         is SeasonDetailsViewState.Error -> { /* TODO: IMPLEMENT */ }
     }
 
-    private fun setupToolbar(seasonName: String) {
-        setSupportActionBar(season_details_toolbar)
+    private fun setupTitle(seasonName: String) {
         season_details_toolbar?.title = seasonName
         title = seasonName
     }
@@ -83,6 +83,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun displaySeasonDetails(season: Season) {
+        setupTitle(season.name)
         displayCoverImage(season)
         seasonDetailsAdapter.addEpisodes(season.episodes)
         season_details_recycler?.adapter = seasonDetailsAdapter
