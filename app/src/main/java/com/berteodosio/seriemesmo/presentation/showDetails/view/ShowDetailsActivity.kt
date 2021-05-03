@@ -8,72 +8,78 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
-import com.berteodosio.seriemesmo.presentation.base.presenter.BasePresenter
+import com.berteodosio.seriemesmo.domain.useCase.show.FetchShowDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
-import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivityWithPresenter
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
 import com.berteodosio.seriemesmo.presentation.custom.view.show
-import com.berteodosio.seriemesmo.presentation.showDetails.presenter.ShowDetailsPresenter
+import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewModel
+import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewModelFactory
+import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewState
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_show_details.*
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
 
-class ShowDetailsActivity : BaseAppCompatActivityWithPresenter<ShowDetailsPresenter>(), ShowDetailsView {
+class ShowDetailsActivity : BaseAppCompatActivity() {
 
-    override fun activityModule(): Kodein.Module = Kodein.Module("Show Details Module") {
-        bind<BasePresenter>() with provider {
-            ShowDetailsPresenter(
-                this@ShowDetailsActivity,
-                instance()
-            )
-        }
-    }
+    private val fetchShowDetailsUseCase: FetchShowDetailsUseCase by instance<FetchShowDetailsUseCase>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_details)
+        setSupportActionBar(show_details_toolbar)
 
         val showId = intent?.getLongExtra(EXTRA_SHOW_ID, INVALID_SHOW_ID) ?: INVALID_SHOW_ID
-        presenter.onInitialize(showId = showId)
+
+        val viewModel: ShowDetailsViewModel by viewModels {
+            ShowDetailsViewModelFactory(
+                showId,
+                fetchShowDetailsUseCase
+            )
+        }
+        viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
     }
 
-    override fun initialize() {
-        setupToolbar()
+    private fun onViewStateChanged(viewState: ShowDetailsViewState) = when (viewState) {
+        ShowDetailsViewState.Loading -> showLoading()
+        is ShowDetailsViewState.ShowDetailsLoaded -> {
+            displayShowDetails(viewState.show)
+            hideLoading()
+        }
+
+        is ShowDetailsViewState.Error -> {
+            hideLoading()
+            // TODO: display error
+        }
     }
 
     private fun setupTabLayoutCustomFonts() {
         for (i in 0..show_details_tablayout.tabCount) {
-            val inflatedTextView = LayoutInflater.from(this).inflate(R.layout.custom_textview_font,null) as? TextView?
+            val inflatedTextView = LayoutInflater.from(this).inflate(R.layout.custom_textview_font, null) as? TextView?
             show_details_tablayout.getTabAt(i)?.customView = inflatedTextView;
         }
     }
 
-    private fun setupToolbar() {
-        setSupportActionBar(show_details_toolbar)
-    }
-
-    override fun showLoading() {
+    private fun showLoading() {
         show_details_viewpager?.hide()
         show_details_loading?.show()
     }
 
-    override fun hideLoading() {
+    private fun hideLoading() {
         show_details_loading?.hide()
         show_details_viewpager?.show()
     }
 
-    override fun displayShowDetails(show: Show) {
+    private fun displayShowDetails(show: Show) {
         setupTabs(show)
         setupTabLayoutCustomFonts()
     }
@@ -81,8 +87,6 @@ class ShowDetailsActivity : BaseAppCompatActivityWithPresenter<ShowDetailsPresen
     private fun setupTabs(show: Show) {
         val adapter = ShowDetailsAdapter(show, supportFragmentManager)
         show_details_viewpager?.adapter = adapter
-        // TODO: check commented code
-//        show_details_viewpager?.addOnPageChangeListener(ViewPagerOnPageSelectedListener { onPageSelected(adapter.get(it)) })
         show_details_tablayout?.setupWithViewPager(show_details_viewpager)
         onPageSelected(show)
     }
@@ -96,22 +100,6 @@ class ShowDetailsActivity : BaseAppCompatActivityWithPresenter<ShowDetailsPresen
             .transition(DrawableTransitionOptions.withCrossFade().clone())
             .apply(RequestOptions().centerCrop())
             .into(cover_image)
-
-//        animatedUpdateColor(newColorRes = candidate.color)
-    }
-
-    private fun animatedUpdateColor(@ColorRes newColorRes: Int) {
-        val oldColor = (collapsing_toolbar_layout?.contentScrim as? ColorDrawable)?.color
-        val newColor = ContextCompat.getColor(this, newColorRes)
-
-        val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), oldColor, newColor)
-        colorAnimation.duration = 250 // milliseconds
-        colorAnimation.addUpdateListener { animator ->
-            val animatedValue = animator.animatedValue as Int
-            collapsing_toolbar_layout?.setContentScrimColor(animatedValue)
-            collapsing_toolbar_layout?.setStatusBarScrimColor(animatedValue)
-        }
-        colorAnimation.start()
     }
 
     companion object {

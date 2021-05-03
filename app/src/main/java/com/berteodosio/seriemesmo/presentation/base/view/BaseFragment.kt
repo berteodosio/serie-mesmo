@@ -7,23 +7,10 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 
-abstract class BaseFragment<T : BasePresenter> : Fragment(), KodeinAware {
-
-    private val nonGenericsPresenter by instance<BasePresenter>()
-    protected val presenter by lazy { nonGenericsPresenter as T }       // TODO: talvez isso mude
+abstract class BaseFragment : Fragment(), KodeinAware {
 
     override val kodein: Kodein = Kodein.lazy {
         extend(AppApplication.kodein)           // TODO: check this
-        import(fragmentModule())
-    }
-
-    protected open fun fragmentModule(): Kodein.Module = Kodein.Module("General Fragment Module") {
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
     }
 
 }
