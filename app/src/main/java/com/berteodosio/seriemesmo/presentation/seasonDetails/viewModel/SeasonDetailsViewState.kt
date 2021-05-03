@@ -10,6 +10,6 @@ sealed class SeasonDetailsViewState {
 
     data class DisplayingContent(val season: Season) : SeasonDetailsViewState()
 
-    class Error(e: Throwable) : SeasonDetailsViewState()
+    object Error : SeasonDetailsViewState()
 
 }

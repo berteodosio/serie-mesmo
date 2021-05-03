@@ -63,7 +63,7 @@ class SeasonDetailsViewModel(
                         e
                     )
 
-                    _viewState.value = SeasonDetailsViewState.Error(e)
+                    _viewState.value = SeasonDetailsViewState.Error
                 })      // TODO properly handle error
 
         addDisposable(disposable)

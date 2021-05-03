@@ -9,17 +9,16 @@ import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
-import org.junit.Assert
+import junit.framework.Assert.assertEquals
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.*
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.any
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.mockito.verification.VerificationMode
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
@@ -65,6 +64,21 @@ class SeasonDetailsViewModelTest {
 
         verify(viewStateObserver).onChanged(SeasonDetailsViewState.Loading(SEASON_NAME))
         verify(viewStateObserver).onChanged(SeasonDetailsViewState.DisplayingContent(mockedSeason))
+    }
+
+    @Test
+    fun `Test Fetch Data Error`() {
+        val throwable = Throwable("General Error")
+        `when`(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
+            .thenReturn(Single.error(throwable))
+
+        val viewStateObserver: Observer<SeasonDetailsViewState> = mock()
+        viewModel.viewState.observeForever(viewStateObserver)
+
+        viewModel.onInitialization()
+
+        verify(viewStateObserver).onChanged(SeasonDetailsViewState.Loading(SEASON_NAME))
+        verify(viewStateObserver).onChanged(SeasonDetailsViewState.Error)
     }
 
     private fun mockSeason(): Season = Season(
