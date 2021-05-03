@@ -27,13 +27,13 @@ class HomeActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setSupportActionBar(home_toolbar)           // TODO: check if should be here
+        setSupportActionBar(home_toolbar)
 
         val viewModel: HomeViewModel by viewModels { HomeViewModelFactory(fetchPopularShowsUseCase) }
         viewModel.viewState.observe(this, Observer { onViewStateChanged(it) } )
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 
-        showsAdapter.addOnShowClickListener(viewModel::onShowClick)
+        showsAdapter.setOnShowClickListener(viewModel::onShowClick)
     }
 
     private fun onNavigationEventReceived(event: HomeNavigationEvent): Unit = when (event) {
@@ -50,13 +50,13 @@ class HomeActivity : BaseAppCompatActivity() {
             }
             is HomeViewState.Error -> {
                 hideLoading()
-                // TODO: showError
+                // TODO: HANDLE ERROR STATE
             }
         }
     }
 
     private fun displayShows(shows: List<Show>) {
-        shows.forEach(::displayShow)        // TODO: refactor as RX
+        shows.forEach(::displayShow)
     }
 
     private fun showLoading() {

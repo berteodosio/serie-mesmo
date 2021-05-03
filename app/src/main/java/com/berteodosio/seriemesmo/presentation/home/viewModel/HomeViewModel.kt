@@ -31,7 +31,7 @@ class HomeViewModel(
         val disposable = fetchPopularShowsUseCase
             .execute()
             .setupCommonSchedulers()
-            .toList()                   // TODO: remove toList()
+            .toList()
             .subscribe(
                 {
                     AppLogger.d(TAG, "Show list fetched");
@@ -39,7 +39,7 @@ class HomeViewModel(
                 },
                 {
                     AppLogger.e(TAG, "An error happened while fetching shows", it)
-                    _viewState.value = HomeViewState.Error(it)              // TODO: show error
+                    _viewState.value = HomeViewState.Error(it)
                 }
             )
 

@@ -27,11 +27,11 @@ class ShowDetailsSeasonsViewModel(private val show: Show?) : BaseViewModel() {
             return
         }
 
-        _viewState.value = ShowDetailsSeasonsViewState.Idle(show.seasons)
+        _viewState.value = ShowDetailsSeasonsViewState.DisplayingSeasons(show.seasons)
     }
 
     fun onSeasonClick(season: Season) {
-        val showId = show?.id ?: return     // TODO properly handle
+        val showId = show?.id ?: return
         _navigationEvents.value = ShowDetailsSeasonsNavigationEvent.NavigateToSeasonDetails(season, showId)
     }
 

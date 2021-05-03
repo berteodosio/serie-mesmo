@@ -62,8 +62,7 @@ class EpisodeDetailsActivity : BaseAppCompatActivity() {
         episode_time?.text = airDate
         episode_cover_image?.loadCenterCrop(coverUrl)
 
-        // TODO fix warning
-        val episodeNumberText = getString(R.string.episode_details_title, "$number")
+        val episodeNumberText = getString(R.string.episode_details_title, number.toString())
         episode_details_toolbar?.title = episodeNumberText
         title = episodeNumberText
     }

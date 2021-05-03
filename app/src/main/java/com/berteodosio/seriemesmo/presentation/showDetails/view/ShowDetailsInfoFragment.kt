@@ -35,7 +35,7 @@ class ShowDetailsInfoFragment : BaseFragment() {
     private fun onViewStateChanged(viewState: ShowDetailsInfoViewState) = when (viewState) {
         is ShowDetailsInfoViewState.Idle -> displayShowDetails(viewState.show)
         ShowDetailsInfoViewState.Error -> {
-            // TODO: display error
+            // TODO: HANDLE ERROR STATE
         }
     }
 
@@ -46,7 +46,7 @@ class ShowDetailsInfoFragment : BaseFragment() {
     }
 
     private fun mountDetailsText(show: Show): String {
-        return "Status: ${show.status}\nOriginal Language: ${show.originalLanguage}"        // TODO EXTRACT STRING RESOURCE
+        return context?.getString(R.string.show_details_info_card_text, show.status, show.originalLanguage) ?: ""
     }
 
     private fun createGenresListText(genres: List<String>): String {
@@ -54,8 +54,7 @@ class ShowDetailsInfoFragment : BaseFragment() {
 
         if (genres.size == 1) return genres.first()
 
-        // TODO: improve this
-        return genres.first() + genres.drop(1).map { " | $it" }.joinToString { it }
+        return genres.joinToString(separator = " | ")
     }
 
     companion object {

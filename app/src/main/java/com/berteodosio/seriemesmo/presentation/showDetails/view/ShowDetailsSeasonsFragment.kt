@@ -38,7 +38,7 @@ class ShowDetailsSeasonsFragment : BaseFragment() {
         viewModel.viewState.observe(viewLifecycleOwner, Observer { onViewStateChanged(it) })
         viewModel.navigationEvents.observe(viewLifecycleOwner, Observer { onNavigationEventReceived(it) })
 
-        showDetailsSeasonsAdapter.addOnClickListener { viewModel.onSeasonClick(it) }
+        showDetailsSeasonsAdapter.setOnClickListener { viewModel.onSeasonClick(it) }
     }
 
     private fun onNavigationEventReceived(event: ShowDetailsSeasonsNavigationEvent) = when (event) {
@@ -46,9 +46,9 @@ class ShowDetailsSeasonsFragment : BaseFragment() {
     }
 
     private fun onViewStateChanged(viewState: ShowDetailsSeasonsViewState) = when (viewState) {
-        is ShowDetailsSeasonsViewState.Idle -> displaySeasons(viewState.seasons)
+        is ShowDetailsSeasonsViewState.DisplayingSeasons -> displaySeasons(viewState.seasons)
         ShowDetailsSeasonsViewState.Error -> {
-            // TODO: showError
+            // TODO: Handle Error State
         }
     }
 

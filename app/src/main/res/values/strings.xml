@@ -5,6 +5,14 @@
     <string name="show_details_info_summary_card_title">Summary</string>
     <string name="show_details_info_genres_card_title">Genres</string>
     <string name="show_details_info_details_card_title">Details</string>
+    <string name="show_details_info_card_text">Status: %1$s\nOriginal Language: %2$s</string>
+    <string name="show_details_page_title_info">INFO</string>
+    <string name="show_details_page_title_seasons">SEASONS</string>
+
+    <plurals name="show_details_episodes_count_text">
+        <item quantity="one">%1$d episode</item>
+        <item quantity="other">%1$d episodes</item>
+    </plurals>
 
     <!-- Season Details -->
     <string name="season_details_episodes">Episodes</string>

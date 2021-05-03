@@ -4,7 +4,7 @@ import com.berteodosio.seriemesmo.domain.model.Season
 
 sealed class ShowDetailsSeasonsViewState {
 
-    class Idle(val seasons: List<Season>) : ShowDetailsSeasonsViewState()
+    class DisplayingSeasons(val seasons: List<Season>) : ShowDetailsSeasonsViewState()
 
     object Error : ShowDetailsSeasonsViewState()
 

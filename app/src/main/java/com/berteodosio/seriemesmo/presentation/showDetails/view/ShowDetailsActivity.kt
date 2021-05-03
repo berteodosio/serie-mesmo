@@ -1,16 +1,11 @@
 package com.berteodosio.seriemesmo.presentation.showDetails.view
 
-import android.animation.ArgbEvaluator
-import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
@@ -58,7 +53,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
 
         is ShowDetailsViewState.Error -> {
             hideLoading()
-            // TODO: display error
+            // TODO: HANDLE ERROR STATE
         }
     }
 
@@ -85,16 +80,14 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun setupTabs(show: Show) {
-        val adapter = ShowDetailsAdapter(show, supportFragmentManager)
+        val adapter = ShowDetailsAdapter(show, supportFragmentManager, resources)
         show_details_viewpager?.adapter = adapter
         show_details_tablayout?.setupWithViewPager(show_details_viewpager)
         onPageSelected(show)
     }
 
-    // TODO check
     private fun onPageSelected(show: Show) {
         show_details_toolbar?.title = show.name
-        AppLogger.d(TAG, "BackdropURL: ${show.backdropUrl}")
         Glide.with(this)
             .load(show.backdropUrl)
             .transition(DrawableTransitionOptions.withCrossFade().clone())

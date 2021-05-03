@@ -15,9 +15,8 @@ import kotlinx.android.synthetic.main.item_show_poster.view.*
 
 class HomeShowsAdapter(private val windowManager: WindowManager) : RecyclerView.Adapter<HomeShowsAdapter.ViewHolder>() {
 
-    // TODO: use view model
     private val shows: MutableList<Show> = mutableListOf()
-    private val showClickListener: PublishSubject<Show> = PublishSubject.create()
+    private var showClickListener: (Show) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.item_show_poster))
@@ -34,9 +33,8 @@ class HomeShowsAdapter(private val windowManager: WindowManager) : RecyclerView.
         notifyItemChanged(shows.lastIndex)
     }
 
-    fun addOnShowClickListener(action: (Show) -> Unit) {
-        // TODO: manage disposable
-        showClickListener.subscribe { action(it) }
+    fun setOnShowClickListener(action: (Show) -> Unit) {
+        this.showClickListener = action
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -44,7 +42,7 @@ class HomeShowsAdapter(private val windowManager: WindowManager) : RecyclerView.
         fun onBind(show: Show) {
             dynamicallyCalculateImageViewSize()
             itemView.show_poster?.loadCenterCrop(show.posterUrl)
-            itemView.show_poster?.setOnClickListener { showClickListener.onNext(show) }
+            itemView.show_poster?.setOnClickListener { showClickListener.invoke(show) }
         }
 
         private fun dynamicallyCalculateImageViewSize() {

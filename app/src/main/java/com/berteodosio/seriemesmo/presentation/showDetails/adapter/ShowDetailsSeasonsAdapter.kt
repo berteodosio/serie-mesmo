@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_season_poster.view.*
 class ShowDetailsSeasonsAdapter : RecyclerView.Adapter<ShowDetailsSeasonsAdapter.ViewHolder>() {
 
     private val seasons: MutableList<Season> = mutableListOf()
-    private val seasonClickListener: PublishSubject<Season> = PublishSubject.create()
+    private var seasonClickListener: (Season) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.item_season_poster))
@@ -35,8 +35,8 @@ class ShowDetailsSeasonsAdapter : RecyclerView.Adapter<ShowDetailsSeasonsAdapter
         notifyDataSetChanged()
     }
 
-    fun addOnClickListener(action: (Season) -> Unit) {
-        seasonClickListener.subscribe(action)           // TODO: handle disposable
+    fun setOnClickListener(action: (Season) -> Unit) {
+        this.seasonClickListener = action
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -45,16 +45,11 @@ class ShowDetailsSeasonsAdapter : RecyclerView.Adapter<ShowDetailsSeasonsAdapter
             itemView.season_poster?.loadCenterCrop(season.posterUrl)
             itemView.season_title?.text = season.name
             itemView.season_episodes_count?.text = mountEpisodesCount(season.episodeCount)
-            itemView.season_card?.setOnClickListener { seasonClickListener.onNext(season) }
+            itemView.season_card?.setOnClickListener { seasonClickListener.invoke(season) }
         }
 
         private fun mountEpisodesCount(episodeCount: Long): String {
-            if (episodeCount == 1L) {
-                return "1 episode"
-            }
-
-            // TODO REFACTOR USE STRINGS FILE
-            return "$episodeCount episodes"
+            return itemView.context.resources.getQuantityString(R.plurals.show_details_episodes_count_text, episodeCount.toInt(), episodeCount.toInt())
         }
 
     }

@@ -65,7 +65,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
             displaySeasonDetails(viewState.season)
             hideLoading()
         }
-        SeasonDetailsViewState.Error -> { /* TODO: IMPLEMENT */ }
+        SeasonDetailsViewState.Error -> { /* TODO: HANDLE ERROR STATE */ }
         SeasonDetailsViewState.Initial -> Unit
     }
 

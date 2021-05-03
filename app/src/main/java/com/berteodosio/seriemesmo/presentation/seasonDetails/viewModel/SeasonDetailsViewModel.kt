@@ -3,6 +3,7 @@ package com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.berteodosio.seriemesmo.domain.model.Episode
+import com.berteodosio.seriemesmo.domain.useCase.base.setupCommonSchedulers
 import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
 import com.berteodosio.seriemesmo.presentation.custom.TAG
@@ -51,9 +52,7 @@ class SeasonDetailsViewModel(
         setLoadingState()
         val disposable = fetchSeasonDetailsUseCase
             .execute(showId, seasonNumber)
-                // TODO: SETUP COMMON SCHEDULERS
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .setupCommonSchedulers()
             .subscribe(
                 { season -> _viewState.value = SeasonDetailsViewState.DisplayingContent(season) },
                 { e ->
@@ -64,7 +63,7 @@ class SeasonDetailsViewModel(
                     )
 
                     _viewState.value = SeasonDetailsViewState.Error
-                })      // TODO properly handle error
+                })
 
         addDisposable(disposable)
     }
