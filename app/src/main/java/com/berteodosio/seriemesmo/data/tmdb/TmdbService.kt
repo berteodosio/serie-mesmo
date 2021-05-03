@@ -10,13 +10,13 @@ import retrofit2.http.Query
 interface TmdbService {
 
     @GET("popular")
-    fun fetchPopularShows(@Query("api_key") apiKey: String): Single<FetchPopularShowsResponse>
+    fun fetchPopularShows(): Single<FetchPopularShowsResponse>
 
     @GET("{showId}")
-    fun fetchShowDetails(@Path(value = "showId") showId: Long, @Query("api_key") apiKey: String): Single<TmdbShow>
+    fun fetchShowDetails(@Path(value = "showId") showId: Long): Single<TmdbShow>
 
     @GET("{showId}/season/{seasonNumber}")
-    fun fetchSeasonDetails(@Path(value = "showId") showId: Long, @Path("seasonNumber") seasonNumber: Long, @Query("api_key") apiKey: String): Single<TmdbSeason>
+    fun fetchSeasonDetails(@Path(value = "showId") showId: Long, @Path("seasonNumber") seasonNumber: Long): Single<TmdbSeason>
 
     data class FetchPopularShowsResponse(var results: List<TmdbShow>?)
 

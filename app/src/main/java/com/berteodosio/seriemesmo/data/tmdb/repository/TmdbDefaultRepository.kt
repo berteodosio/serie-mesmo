@@ -7,28 +7,25 @@ import com.berteodosio.seriemesmo.data.tmdb.model.TmdbShow
 import io.reactivex.Observable
 import io.reactivex.Single
 
-class TmdbDefaultRepository(
-    private val tmdbApi: TmdbApi,
-    private val tmdbApiKey: String
-) : TmdbRepository {
+class TmdbDefaultRepository(private val tmdbApi: TmdbApi) : TmdbRepository {
 
     override fun fetchPopularShows(): Observable<TmdbShow> {
         return tmdbApi
             .service()
-            .fetchPopularShows(tmdbApiKey)
+            .fetchPopularShows()
             .flatMapObservable { Observable.fromArray(*it.results?.toTypedArray() ?: emptyArray()) }
     }
 
     override fun fetchShowDetails(showId: Long): Single<TmdbShow> {
         return tmdbApi
             .service()
-            .fetchShowDetails(apiKey = tmdbApiKey, showId = showId)
+            .fetchShowDetails(showId = showId)
     }
 
     override fun fetchSeasonDetails(showId: Long, seasonNumber: Long): Single<TmdbSeason> {
         return tmdbApi
             .service()
-            .fetchSeasonDetails(showId = showId, seasonNumber = seasonNumber, apiKey = tmdbApiKey)
+            .fetchSeasonDetails(showId = showId, seasonNumber = seasonNumber)
     }
 
 }
