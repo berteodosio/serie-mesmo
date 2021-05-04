@@ -17,11 +17,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.kotlin.argumentCaptor
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.refEq
-import org.mockito.kotlin.verify
+import org.mockito.kotlin.*
 
 class HomeViewModelTest {
 
@@ -49,7 +45,7 @@ class HomeViewModelTest {
     fun `Test Fetch Popular Shows success case`() {
         val showsList: List<Show> = listOf(mock(), mock())
 
-        `when`(fetchPopularShowsUseCase.execute())
+        whenever(fetchPopularShowsUseCase.execute())
             .thenReturn(Observable.fromArray(*showsList.toTypedArray()))
 
         val observer: Observer<HomeViewState> = mock()
@@ -67,7 +63,7 @@ class HomeViewModelTest {
     @Test
     fun `Test Fetch Popular Shows failure case`() {
         val exception = Exception("General Error")
-        `when`(fetchPopularShowsUseCase.execute())
+        whenever(fetchPopularShowsUseCase.execute())
             .thenReturn(Observable.error(exception))
 
         val observer: Observer<HomeViewState> = mock()

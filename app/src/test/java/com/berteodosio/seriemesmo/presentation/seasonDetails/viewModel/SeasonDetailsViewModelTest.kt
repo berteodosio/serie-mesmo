@@ -11,9 +11,9 @@ import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.`when`
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
 
 class SeasonDetailsViewModelTest {
 
@@ -46,7 +46,7 @@ class SeasonDetailsViewModelTest {
     @Test
     fun `Test Fetch Data Success`() {
         val mockedSeason: Season = mockSeason()
-        `when`(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
+        whenever(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
             .thenReturn(Single.just(mockedSeason))
 
         val viewStateObserver: Observer<SeasonDetailsViewState> = mock()
@@ -61,7 +61,7 @@ class SeasonDetailsViewModelTest {
     @Test
     fun `Test Fetch Data Error`() {
         val throwable = Throwable("General Error")
-        `when`(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
+        whenever(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
             .thenReturn(Single.error(throwable))
 
         val viewStateObserver: Observer<SeasonDetailsViewState> = mock()

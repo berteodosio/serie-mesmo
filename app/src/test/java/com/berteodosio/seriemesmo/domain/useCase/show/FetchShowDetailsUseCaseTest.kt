@@ -1,13 +1,18 @@
 package com.berteodosio.seriemesmo.domain.useCase.show
 
+import com.berteodosio.seriemesmo.data.tmdb.repository.TmdbRepository
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.repositoryModule
 import com.berteodosio.seriemesmo.tmdbModule
 import com.berteodosio.seriemesmo.useCaseModule
+import io.reactivex.Single
 import org.junit.Assert.*
 import org.junit.Test
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
+import org.mockito.kotlin.any
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 
 class FetchShowDetailsUseCaseTest {
 
@@ -35,7 +40,22 @@ class FetchShowDetailsUseCaseTest {
         assertEquals("Show name is wrong", "Peaky Blinders", show.name)
     }
 
+    @Test
+    fun `Test UseCase fails when repository fails`() {
+        val testError = Exception()
+        val repository: TmdbRepository = mock()
+        val useCase = FetchShowDetailsUseCase(repository)
+        val showId = any<Long>()
+        whenever(repository.fetchShowDetails(showId)).thenReturn(Single.error(testError))
+
+        useCase
+            .execute(showId)
+            .test()
+            .assertError(testError)
+    }
+
     private companion object {
         const val PEAKY_BLINDERS_SHOW_ID = 60574L
+
     }
 }
