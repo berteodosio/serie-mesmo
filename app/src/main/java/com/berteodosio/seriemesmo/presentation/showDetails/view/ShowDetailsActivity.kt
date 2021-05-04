@@ -9,10 +9,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
-import com.berteodosio.seriemesmo.domain.useCase.show.FetchShowDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
-import com.berteodosio.seriemesmo.presentation.custom.TAG
-import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
 import com.berteodosio.seriemesmo.presentation.custom.view.show
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewModel
@@ -26,8 +23,6 @@ import org.kodein.di.generic.instance
 
 class ShowDetailsActivity : BaseAppCompatActivity() {
 
-    private val fetchShowDetailsUseCase: FetchShowDetailsUseCase by instance<FetchShowDetailsUseCase>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_details)
@@ -38,7 +33,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
         val viewModel: ShowDetailsViewModel by viewModels {
             ShowDetailsViewModelFactory(
                 showId,
-                fetchShowDetailsUseCase
+                instance()
             )
         }
         viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })

@@ -22,14 +22,12 @@ class HomeActivity : BaseAppCompatActivity() {
 
     private val showsAdapter by lazy { HomeShowsAdapter(windowManager) }
 
-    private val fetchPopularShowsUseCase: FetchPopularShowsUseCase by instance<FetchPopularShowsUseCase>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(home_toolbar)
 
-        val viewModel: HomeViewModel by viewModels { HomeViewModelFactory(fetchPopularShowsUseCase) }
+        val viewModel: HomeViewModel by viewModels { HomeViewModelFactory(instance()) }
         viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 

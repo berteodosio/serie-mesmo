@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
-import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
@@ -23,12 +22,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_season_details.*
-import org.kodein.di.generic.instance
 
 class SeasonDetailsActivity : BaseAppCompatActivity() {
 
     private val seasonDetailsAdapter by lazy { SeasonDetailsAdapter() }
-    private val fetchSeasonDetailsUseCase by instance<FetchSeasonDetailsUseCase>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +36,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
         val seasonNumber = intent?.getLongExtra(EXTRA_SEASON_NUMBER, INVALID_VALUE) ?: INVALID_VALUE
         val seasonName = intent?.getStringExtra(EXTRA_SEASON_NAME) ?: ""
 
-        val viewModel: SeasonDetailsViewModel by viewModels { SeasonDetailsViewModelFactory(showId, seasonNumber, seasonName, fetchSeasonDetailsUseCase) }
+        val viewModel: SeasonDetailsViewModel by viewModels { SeasonDetailsViewModelFactory(showId, seasonNumber, seasonName, instance()) }
         viewModel.viewState.observe(this, Observer { viewState -> onViewStateChanged(viewState) })
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 
