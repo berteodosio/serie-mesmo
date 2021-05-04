@@ -34,6 +34,7 @@ class HomeActivity : BaseAppCompatActivity() {
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 
         showsAdapter.setOnShowClickListener(viewModel::onShowClick)
+        viewModel.onInitialization()
     }
 
     private fun onNavigationEventReceived(event: HomeNavigationEvent): Unit = when (event) {
@@ -53,6 +54,7 @@ class HomeActivity : BaseAppCompatActivity() {
                 hideLoading()
                 showErrorLayout()
             }
+            HomeViewState.Initial -> Unit
         }
     }
 

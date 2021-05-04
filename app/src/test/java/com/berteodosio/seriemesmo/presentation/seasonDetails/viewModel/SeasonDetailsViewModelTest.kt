@@ -1,7 +1,6 @@
 package com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
@@ -15,9 +14,6 @@ import org.junit.Test
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.TimeoutException
 
 class SeasonDetailsViewModelTest {
 
