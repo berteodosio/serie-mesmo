@@ -86,8 +86,14 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun displayShowDetails(show: Show) {
+        setupTitle(show)
         setupTabs(show)
         setupTabLayoutCustomFonts()
+    }
+
+    private fun setupTitle(show: Show) {
+        show_details_toolbar?.title = show.name
+        title = show.name
     }
 
     private fun setupTabs(show: Show) {
@@ -98,7 +104,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun onPageSelected(show: Show) {
-        show_details_toolbar?.title = show.name
+        setupTitle(show)
         Glide.with(this)
             .load(show.backdropUrl)
             .transition(DrawableTransitionOptions.withCrossFade().clone())

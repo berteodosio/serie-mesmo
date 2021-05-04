@@ -5,6 +5,7 @@ import com.berteodosio.seriemesmo.data.tmdb.repository.TmdbRepository
 import com.berteodosio.seriemesmo.data.tmdb.TmdbApi
 import com.berteodosio.seriemesmo.data.tmdb.TmdbApiKeyInterceptor
 import com.berteodosio.seriemesmo.data.tmdb.TmdbDefaultApi
+import com.berteodosio.seriemesmo.data.tmdb.TmdbService
 import com.berteodosio.seriemesmo.domain.useCase.season.FetchSeasonDetailsUseCase
 import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
 import com.berteodosio.seriemesmo.domain.useCase.show.FetchShowDetailsUseCase
@@ -23,6 +24,7 @@ val useCaseModule = Kodein.Module("Use Cases Module") {
 val tmdbModule = Kodein.Module("TMDB Module") {
     bind<TmdbApiKeyInterceptor>() with singleton { TmdbApiKeyInterceptor(BuildConfig.TMDB_API_KEY) }
     bind<TmdbApi>() with singleton { TmdbDefaultApi(instance()) }
+    bind<TmdbService>() with singleton { instance<TmdbApi>().service() }
 }
 
 val repositoryModule = Kodein.Module("Repository Module") {
