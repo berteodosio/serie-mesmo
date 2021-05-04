@@ -46,10 +46,8 @@ class ShowDetailsSeasonsFragment : BaseFragment() {
     }
 
     private fun onViewStateChanged(viewState: ShowDetailsSeasonsViewState) = when (viewState) {
-        is ShowDetailsSeasonsViewState.DisplayingSeasons -> displaySeasons(viewState.seasons)
-        ShowDetailsSeasonsViewState.Error -> {
-            // TODO: Handle Error State
-        }
+        is ShowDetailsSeasonsViewState.DisplayingContent -> displaySeasons(viewState.seasons)
+        ShowDetailsSeasonsViewState.Error -> Unit
     }
 
     private fun displaySeasons(seasons: List<Season>) {

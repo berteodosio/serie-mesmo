@@ -33,10 +33,8 @@ class ShowDetailsInfoFragment : BaseFragment() {
     }
 
     private fun onViewStateChanged(viewState: ShowDetailsInfoViewState) = when (viewState) {
-        is ShowDetailsInfoViewState.Idle -> displayShowDetails(viewState.show)
-        ShowDetailsInfoViewState.Error -> {
-            // TODO: HANDLE ERROR STATE
-        }
+        is ShowDetailsInfoViewState.DisplayingContent -> displayShowDetails(viewState.show)
+        ShowDetailsInfoViewState.Error -> Unit
     }
 
     private fun displayShowDetails(show: Show) {

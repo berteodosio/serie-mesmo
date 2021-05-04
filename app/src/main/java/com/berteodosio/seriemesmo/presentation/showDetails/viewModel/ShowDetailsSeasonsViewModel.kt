@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.viewModel.BaseViewModel
+import com.berteodosio.seriemesmo.presentation.custom.TAG
+import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.hadilq.liveevent.LiveEvent
 
 class ShowDetailsSeasonsViewModel(private val show: Show?) : BaseViewModel() {
@@ -23,11 +25,12 @@ class ShowDetailsSeasonsViewModel(private val show: Show?) : BaseViewModel() {
 
     private fun displaySeasons() {
         if (show == null) {
+            AppLogger.i(TAG, "Null show has been passed as an argument. Unable to display information")
             _viewState.value = ShowDetailsSeasonsViewState.Error
             return
         }
 
-        _viewState.value = ShowDetailsSeasonsViewState.DisplayingSeasons(show.seasons)
+        _viewState.value = ShowDetailsSeasonsViewState.DisplayingContent(show.seasons)
     }
 
     fun onSeasonClick(season: Season) {
