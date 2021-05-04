@@ -92,7 +92,6 @@ class HomeViewModelTest {
         viewModel.navigationEvents.observeForever(observer)
 
         val show: Show = mock()
-
         viewModel.onShowClick(show)
 
         verify(observer).onChanged(refEq(HomeNavigationEvent.NavigateToShowDetails(show.id)))
