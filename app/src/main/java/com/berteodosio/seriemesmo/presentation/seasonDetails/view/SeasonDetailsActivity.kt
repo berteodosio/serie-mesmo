@@ -62,11 +62,25 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
             showLoading()
         }
         is SeasonDetailsViewState.DisplayingContent -> {
+            hideErrorLayout()
             displaySeasonDetails(viewState.season)
             hideLoading()
         }
-        SeasonDetailsViewState.Error -> { /* TODO: HANDLE ERROR STATE */ }
+        SeasonDetailsViewState.Error -> {
+            hideLoading()
+            showErrorLayout()
+        }
         SeasonDetailsViewState.Initial -> Unit
+    }
+
+    private fun hideErrorLayout() {
+        season_details_error_text?.hide()
+        season_details_recycler?.show()
+    }
+
+    private fun showErrorLayout() {
+        season_details_recycler?.hide()
+        season_details_error_text?.show()
     }
 
     private fun setupTitle(seasonName: String) {

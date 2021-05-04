@@ -6,7 +6,7 @@ sealed class HomeViewState {
 
     object Loading : HomeViewState()
 
-    class Idle(val shows: List<Show>) : HomeViewState()
+    class DisplayingShows(val shows: List<Show>) : HomeViewState()
 
     class Error(e: Throwable) : HomeViewState()
 

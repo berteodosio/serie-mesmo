@@ -35,7 +35,7 @@ class HomeViewModel(
             .subscribe(
                 {
                     AppLogger.d(TAG, "Show list fetched");
-                    _viewState.value = HomeViewState.Idle(it)
+                    _viewState.value = HomeViewState.DisplayingShows(it)
                 },
                 {
                     AppLogger.e(TAG, "An error happened while fetching shows", it)

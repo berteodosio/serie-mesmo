@@ -30,7 +30,7 @@ class HomeActivity : BaseAppCompatActivity() {
         setSupportActionBar(home_toolbar)
 
         val viewModel: HomeViewModel by viewModels { HomeViewModelFactory(fetchPopularShowsUseCase) }
-        viewModel.viewState.observe(this, Observer { onViewStateChanged(it) } )
+        viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
         viewModel.navigationEvents.observe(this, Observer { onNavigationEventReceived(it) })
 
         showsAdapter.setOnShowClickListener(viewModel::onShowClick)
@@ -43,16 +43,27 @@ class HomeActivity : BaseAppCompatActivity() {
     private fun onViewStateChanged(viewState: HomeViewState) {
         return when (viewState) {
             HomeViewState.Loading -> showLoading()
-            is HomeViewState.Idle -> {
+            is HomeViewState.DisplayingShows -> {
+                hideErrorLayout()
                 hideLoading()
                 setupAdapter()
                 displayShows(viewState.shows)
             }
             is HomeViewState.Error -> {
                 hideLoading()
-                // TODO: HANDLE ERROR STATE
+                showErrorLayout()
             }
         }
+    }
+
+    private fun hideErrorLayout() {
+        home_error_text?.hide()
+        shows_recycler?.show()
+    }
+
+    private fun showErrorLayout() {
+        shows_recycler?.hide()
+        home_error_text?.show()
     }
 
     private fun displayShows(shows: List<Show>) {

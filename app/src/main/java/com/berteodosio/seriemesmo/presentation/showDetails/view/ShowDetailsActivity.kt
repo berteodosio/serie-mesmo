@@ -47,14 +47,25 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     private fun onViewStateChanged(viewState: ShowDetailsViewState) = when (viewState) {
         ShowDetailsViewState.Loading -> showLoading()
         is ShowDetailsViewState.ShowDetailsLoaded -> {
+            hideErrorLayout()
             displayShowDetails(viewState.show)
             hideLoading()
         }
 
         is ShowDetailsViewState.Error -> {
             hideLoading()
-            // TODO: HANDLE ERROR STATE
+            showErrorLayout()
         }
+    }
+
+    private fun hideErrorLayout() {
+        show_details_error_text?.hide()
+        show_details_viewpager?.show()
+    }
+
+    private fun showErrorLayout() {
+        show_details_viewpager?.hide()
+        show_details_error_text?.show()
     }
 
     private fun setupTabLayoutCustomFonts() {

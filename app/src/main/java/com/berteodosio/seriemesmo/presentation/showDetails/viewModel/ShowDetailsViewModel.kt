@@ -32,7 +32,10 @@ class ShowDetailsViewModel(
             .setupCommonSchedulers()
             .subscribe(
                 { show -> _viewState.value = ShowDetailsViewState.ShowDetailsLoaded(show) },
-                { e -> AppLogger.e(TAG, "Error fetching Show Details for $showId", e) }
+                { e ->
+                    AppLogger.e(TAG, "Error fetching Show Details for $showId", e)
+                    _viewState.value = ShowDetailsViewState.Error(e)
+                }
             )
 
         addDisposable(disposable)
