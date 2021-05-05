@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.berteodosio.seriemesmo.presentation.home.view.HomeActivity">
+        <activity android:name="com.berteodosio.seriemesmo.presentation.home.view.HomeActivity"
+            android:theme="@style/AppTheme.BlackBackground">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

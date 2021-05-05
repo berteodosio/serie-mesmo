@@ -21,12 +21,12 @@ class ShowDetailsViewModel(
         fetchShowDetails()
     }
 
-    private fun fetchShowDetails() {
-        setLoadingState()
-    }
-
     private fun setLoadingState() {
         _viewState.value = ShowDetailsViewState.Loading
+    }
+
+    private fun fetchShowDetails() {
+        setLoadingState()
         val disposable = fetchShowDetailsUseCase
             .execute(showId)
             .setupCommonSchedulers()
