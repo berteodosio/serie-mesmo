@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SerieMesmo</string>
+    <string name="app_name">Série Mesmo</string>
     <string name="general_error_text">Oops! Something unexpected happened\nPlease, check your internet connection and try again later</string>
 
     <!-- Show Details -->
