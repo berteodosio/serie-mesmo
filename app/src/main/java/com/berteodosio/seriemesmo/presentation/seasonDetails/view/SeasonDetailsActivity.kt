@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
@@ -28,7 +29,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_season_details)
-        setSupportActionBar(season_details_toolbar)
+        initializeToolbar()
 
         val showId = intent?.getLongExtra(EXTRA_SHOW_ID, INVALID_VALUE) ?: INVALID_VALUE
         val seasonNumber = intent?.getLongExtra(EXTRA_SEASON_NUMBER, INVALID_VALUE) ?: INVALID_VALUE
@@ -40,6 +41,19 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
 
         seasonDetailsAdapter.setOnClickListener(viewModel::onEpisodeClick)
         viewModel.onInitialization()
+    }
+
+    private fun initializeToolbar() {
+        setSupportActionBar(season_details_toolbar)
+        setupToolbarFont()
+    }
+
+    private fun setupToolbarFont() {
+        val montserratTypeface = ResourcesCompat.getFont(this, R.font.montserrat)
+        collapsing_toolbar_layout?.apply {
+            setCollapsedTitleTypeface(montserratTypeface)
+            setExpandedTitleTypeface(montserratTypeface)
+        }
     }
 
     private fun onNavigationEventReceived(event: SeasonDetailsNavigationEvent) {
