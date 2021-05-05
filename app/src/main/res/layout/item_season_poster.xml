@@ -29,7 +29,7 @@
                 android:layout_height="192dp"
                 tools:src="@color/colorPrimary" />
 
-            <TextView
+            <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                 android:id="@+id/season_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,19 +37,17 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
-                android:fontFamily="@font/montserrat"
                 android:maxLines="1"
                 android:textSize="14sp"
                 tools:text="Season 1" />
 
-            <TextView
+            <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                 android:id="@+id/season_episodes_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
-                android:fontFamily="@font/montserrat"
                 android:maxLines="1"
                 android:textSize="12sp"
                 tools:text="3 episodes" />

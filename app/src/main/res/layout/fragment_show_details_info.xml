@@ -27,14 +27,13 @@
                 android:orientation="vertical"
                 android:paddingBottom="16dp">
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/summary_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_summary_card_title"
                     android:textAllCaps="true" />
 
@@ -42,14 +41,13 @@
                     style="@style/CardSimpleLine"
                     android:layout_marginTop="8dp" />
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/show_overview_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat"
                     tools:text="Aiuhguidhgdsu igdhsiugs giudsg usid gsuigsiugeigehiue iuea taeuit aehit aeiuta aituh tiuatuiat ait aiut atiua tiua tuai tauit auit aiut ai taiu tat iata aituht aiu taiut aiu aituht iua aiutahit uai taiut auit auithaui fuifauiae htuiaethauitheauithauitehfdkjfqeoigew goiwg w groifophjr rjp " />
 
             </LinearLayout>
@@ -73,14 +71,13 @@
                 android:orientation="vertical"
                 android:paddingBottom="16dp">
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/genres_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_genres_card_title"
                     android:textAllCaps="true" />
 
@@ -88,14 +85,13 @@
                     style="@style/CardSimpleLine"
                     android:layout_marginTop="8dp" />
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/show_genres_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat"
                     tools:text="Crime | Drama" />
 
             </LinearLayout>
@@ -122,14 +118,13 @@
                 android:orientation="vertical"
                 android:paddingBottom="16dp">
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/details_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
                     android:text="@string/show_details_info_details_card_title"
                     android:textAllCaps="true" />
 
@@ -137,14 +132,13 @@
                     style="@style/CardSimpleLine"
                     android:layout_marginTop="8dp" />
 
-                <TextView
+                <com.berteodosio.seriemesmo.presentation.custom.view.MontserratTextView
                     android:id="@+id/show_details_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/montserrat"
                     tools:text="Status: XXXX\nOrigin Country: GB" />
 
             </LinearLayout>
