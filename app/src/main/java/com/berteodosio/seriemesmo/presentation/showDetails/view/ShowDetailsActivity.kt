@@ -11,15 +11,12 @@ import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
+import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
 import com.berteodosio.seriemesmo.presentation.custom.view.show
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewModel
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewModelFactory
 import com.berteodosio.seriemesmo.presentation.showDetails.viewModel.ShowDetailsViewState
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_show_details.*
-import org.kodein.di.generic.instance
 
 class ShowDetailsActivity : BaseAppCompatActivity() {
 
@@ -100,11 +97,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
 
     private fun onPageSelected(show: Show) {
         setupTitle(show)
-        Glide.with(this)
-            .load(show.backdropUrl)
-            .transition(DrawableTransitionOptions.withCrossFade().clone())
-            .apply(RequestOptions().centerCrop())
-            .into(cover_image)
+        cover_image?.loadCenterCropCrossFade(show.backdropUrl)
     }
 
     companion object {

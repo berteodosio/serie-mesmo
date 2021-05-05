@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
+import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewState
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModel
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModelFactory
@@ -60,7 +61,7 @@ class EpisodeDetailsActivity : BaseAppCompatActivity() {
         episode_title?.text = name
         episode_overview_text?.text = overview
         episode_time?.text = airDate
-        episode_cover_image?.loadCenterCrop(coverUrl)
+        episode_cover_image?.loadCenterCropCrossFade(coverUrl)
 
         val episodeNumberText = getString(R.string.episode_details_title, number.toString())
         episode_details_toolbar?.title = episodeNumberText

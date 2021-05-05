@@ -7,6 +7,7 @@ import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.presentation.custom.view.inflate
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
+import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_season_poster.view.*
 
@@ -42,7 +43,7 @@ class ShowDetailsSeasonsAdapter : RecyclerView.Adapter<ShowDetailsSeasonsAdapter
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun onBind(season: Season) {
-            itemView.season_poster?.loadCenterCrop(season.posterUrl)
+            itemView.season_poster?.loadCenterCropCrossFade(season.posterUrl)
             itemView.season_title?.text = season.name
             itemView.season_episodes_count?.text = mountEpisodesCount(season.episodeCount)
             itemView.season_card?.setOnClickListener { seasonClickListener.invoke(season) }

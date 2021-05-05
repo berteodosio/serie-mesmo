@@ -11,6 +11,7 @@ import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.TAG
 import com.berteodosio.seriemesmo.presentation.custom.logger.AppLogger
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
+import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
 import com.berteodosio.seriemesmo.presentation.custom.view.show
 import com.berteodosio.seriemesmo.presentation.episodeDetails.view.EpisodeDetailsActivity
 import com.berteodosio.seriemesmo.presentation.seasonDetails.adapter.SeasonDetailsAdapter
@@ -18,9 +19,6 @@ import com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel.SeasonDet
 import com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel.SeasonDetailsViewModel
 import com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel.SeasonDetailsViewModelFactory
 import com.berteodosio.seriemesmo.presentation.seasonDetails.viewModel.SeasonDetailsViewState
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_season_details.*
 
 class SeasonDetailsActivity : BaseAppCompatActivity() {
@@ -104,11 +102,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
 
     private fun displayCoverImage(season: Season) {
         AppLogger.i(TAG, "Displaying season image: ${season.posterUrl}")
-        Glide.with(this)
-            .load(season.posterUrl)
-            .transition(DrawableTransitionOptions.withCrossFade().clone())
-            .apply(RequestOptions().centerCrop())
-            .into(season_cover_image)
+        season_cover_image?.loadCenterCropCrossFade(season.posterUrl)
     }
 
     private fun navigateToEpisodeDetailsScreen(episodeName: String, episodeOverview: String, episodeCoverUrl: String, episodeAirDate: String, episodeNumber: Long) {
