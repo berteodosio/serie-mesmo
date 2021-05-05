@@ -21,6 +21,6 @@ fun ImageView.loadCenterCrop(url: String) {
 fun ImageView.loadCenterCropCrossFade(url: String) {
     glideLoad(url)
         .applyCenterCrop()
-        .transition(DrawableTransitionOptions.withCrossFade().clone())
+        .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

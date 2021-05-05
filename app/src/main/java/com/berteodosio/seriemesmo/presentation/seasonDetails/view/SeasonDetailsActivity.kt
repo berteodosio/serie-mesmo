@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
+import androidx.transition.TransitionManager
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
@@ -103,6 +104,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun hideLoading() {
+        TransitionManager.beginDelayedTransition(season_details_layout)
         season_details_loading?.hide()
         season_details_recycler?.show()
     }

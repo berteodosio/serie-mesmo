@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.transition.TransitionManager
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
@@ -73,6 +74,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     }
 
     private fun hideLoading() {
+        TransitionManager.beginDelayedTransition(show_details_frame)
         show_details_loading?.hide()
         show_details_viewpager?.show()
     }

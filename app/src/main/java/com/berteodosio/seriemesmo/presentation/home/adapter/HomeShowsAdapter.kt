@@ -35,7 +35,7 @@ class HomeShowsAdapter(private val windowManager: WindowManager) : RecyclerView.
 
     fun addShow(show: Show) {
         shows.add(show)
-        notifyItemChanged(shows.lastIndex)
+        notifyItemInserted(shows.lastIndex)
     }
 
     fun setOnShowClickListener(action: (Show) -> Unit) {

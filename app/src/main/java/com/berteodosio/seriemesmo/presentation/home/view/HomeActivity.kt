@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
-import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
 import com.berteodosio.seriemesmo.presentation.custom.view.hide
 import com.berteodosio.seriemesmo.presentation.custom.view.show
@@ -16,7 +15,6 @@ import com.berteodosio.seriemesmo.presentation.home.viewModel.HomeViewModelFacto
 import com.berteodosio.seriemesmo.presentation.home.viewModel.HomeViewState
 import com.berteodosio.seriemesmo.presentation.showDetails.view.ShowDetailsActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import org.kodein.di.generic.instance
 
 class HomeActivity : BaseAppCompatActivity() {
 
