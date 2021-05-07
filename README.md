@@ -29,6 +29,8 @@ Please note that this file is not included on git versioning, and is manually ex
   <img src="screenshots/s4.jpeg" align="center" width=200>
 </p>
 
+## UX Design
+Visual interface of the app is based on a project that I've developed in 2015, while I was coursing MovileUP course. During the course, we had to develop a similar application, with a design provided by the course teachers.
 
 ## Architecture
 The project was built on Clean Architecture, deeply integrated with RxJava for fetching data.
