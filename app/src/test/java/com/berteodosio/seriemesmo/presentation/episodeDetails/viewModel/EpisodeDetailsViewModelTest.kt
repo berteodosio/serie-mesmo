@@ -2,11 +2,14 @@ package com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.berteodosio.seriemesmo.presentation.episodeDetails.formatter.DateFormatter
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
 
 class EpisodeDetailsViewModelTest {
 
@@ -18,12 +21,17 @@ class EpisodeDetailsViewModelTest {
 
     @Before
     fun setup() {
+        val dateFormatter: DateFormatter = mock()
+        whenever(dateFormatter.format(any()))
+            .thenReturn(EPISODE_AIR_DATE)
+
         viewModel = EpisodeDetailsViewModel(
             episodeName = EPISODE_NAME,
             episodeOverview = EPISODE_OVERVIEW,
             episodeCoverUrl = EPISODE_COVER_URL,
             episodeAirDate = EPISODE_AIR_DATE,
-            episodeNumber = EPISODE_NUMBER
+            episodeNumber = EPISODE_NUMBER,
+            dateFormatter = dateFormatter
         )
 
         observer = mock()
