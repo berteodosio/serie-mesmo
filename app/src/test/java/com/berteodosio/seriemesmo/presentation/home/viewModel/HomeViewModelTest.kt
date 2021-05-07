@@ -1,12 +1,9 @@
-package com.berteodosio.seriemesmo.presentation.home
+package com.berteodosio.seriemesmo.presentation.home.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.domain.useCase.show.FetchPopularShowsUseCase
-import com.berteodosio.seriemesmo.presentation.home.viewModel.HomeNavigationEvent
-import com.berteodosio.seriemesmo.presentation.home.viewModel.HomeViewModel
-import com.berteodosio.seriemesmo.presentation.home.viewModel.HomeViewState
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins

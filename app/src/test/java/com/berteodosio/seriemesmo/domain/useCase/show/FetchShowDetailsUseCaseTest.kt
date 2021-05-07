@@ -41,7 +41,7 @@ class FetchShowDetailsUseCaseTest {
     }
 
     @Test
-    fun `Test UseCase fails when repository fails`() {
+    fun `Test FetchShowDetailsUseCase fails when repository fails`() {
         val testError = Exception()
         val repository: TmdbRepository = mock()
         val useCase = FetchShowDetailsUseCase(repository)
