@@ -1,5 +1,5 @@
 # Série Mesmo
-"Série Mesmo" is an application developed is a sample application that loads TV Shows from https://www.themoviedb.org/ and displays the 20 most popular TV shows: https://www.themoviedb.org/tv/.
+"Série Mesmo" is a sample Android Application that loads TV Shows from https://www.themoviedb.org/ and displays the 20 most popular.
 
 Among the displayed data, one can find
 * Show info (summary, genres, details, list of seasons)
@@ -20,7 +20,15 @@ replacing `<your_api_key>` by the value of the key you've generated before.
 Please note that this file is not included on git versioning (it is manually excluded in .gitignore file), to avoid private API keys being leaked.
 
 ## Screenshots
-TODO() Add Photos
+
+<p align="center">
+  <img src="screenshots/s0.jpeg" align="center" width=200>
+  <img src="screenshots/s1.jpeg" align="center" width=200>
+  <img src="screenshots/s2.jpeg" align="center" width=200>
+  <img src="screenshots/s3.jpeg" align="center" width=200>
+  <img src="screenshots/s4.jpeg" align="center" width=200>
+</p>
+
 
 ## Architecture
 The project was built on Clean Architecture, deeply integrated with RxJava for fetching data.
