@@ -8,6 +8,12 @@ Among the displayed data, one can find
 
 Debug APK for the application can be found here: https://drive.google.com/file/d/1TULmRJB4Z6CWl3-tI5dZ8cVLWzqPu8pJ/view?usp=sharing
 
+You can also download and install the app by scanning the QRCode below:
+
+<p align="center">
+  <img src="screenshots/serie-mesmo-qr.png" align="center" width=300>
+</p>
+
 ## Building the project
 The app uses the TMDB API Version 3 to fetch content. In order to use this API, one must create an account on the TMDB website and generate a Key for the API. Instructions for generating the API key can be found here: https://developers.themoviedb.org/3/getting-started/authentication#application-authentication
 
