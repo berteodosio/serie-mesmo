@@ -21,9 +21,7 @@ class EpisodeDetailsViewModelTest {
 
     @Before
     fun setup() {
-        val dateFormatter: DateFormatter = mock()
-        whenever(dateFormatter.format(any()))
-            .thenReturn(EPISODE_AIR_DATE)
+        val dateFormatter: DateFormatter = createDateFormatter()
 
         viewModel = EpisodeDetailsViewModel(
             episodeName = EPISODE_NAME,
@@ -36,6 +34,14 @@ class EpisodeDetailsViewModelTest {
 
         observer = mock()
         viewModel.viewState.observeForever(observer)
+    }
+
+    private fun createDateFormatter(): DateFormatter {
+        val dateFormatter: DateFormatter = mock()
+
+        // we force the return of the method to avoid it returning null
+        whenever(dateFormatter.format(any())).thenReturn(EPISODE_AIR_DATE)
+        return dateFormatter
     }
 
     @Test
