@@ -15,9 +15,9 @@ After obtaining your API key, you must create a text file named "secure.properti
 
 ```TMDB_API_KEY=<your_api_key>```
 
-replacing `<your_api_key>` by the value of the key you've generated before.
+replacing `<your_api_key>` with the value of the key you've generated before.
 
-Please note that this file is not included on git versioning (it is manually excluded in .gitignore file), to avoid private API keys being leaked.
+Please note that this file is not included on git versioning, and is manually excluded in .gitignore file, to avoid private API keys being leaked.
 
 ## Screenshots
 
