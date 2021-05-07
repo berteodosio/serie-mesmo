@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Season
 import com.berteodosio.seriemesmo.presentation.custom.view.inflate
-import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
-import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_season_poster.view.*
 
 class ShowDetailsSeasonsAdapter : RecyclerView.Adapter<ShowDetailsSeasonsAdapter.ViewHolder>() {

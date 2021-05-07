@@ -8,13 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.domain.model.Show
 import com.berteodosio.seriemesmo.presentation.custom.view.inflate
-import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
-import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_season_details.*
 import kotlinx.android.synthetic.main.item_show_poster.view.*
 
 

@@ -7,11 +7,10 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.berteodosio.seriemesmo.R
 import com.berteodosio.seriemesmo.presentation.base.view.BaseAppCompatActivity
-import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCrop
 import com.berteodosio.seriemesmo.presentation.custom.view.loadCenterCropCrossFade
-import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewState
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModel
 import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewModelFactory
+import com.berteodosio.seriemesmo.presentation.episodeDetails.viewModel.EpisodeDetailsViewState
 import kotlinx.android.synthetic.main.activity_episode_details.*
 
 class EpisodeDetailsActivity : BaseAppCompatActivity() {
@@ -41,6 +40,7 @@ class EpisodeDetailsActivity : BaseAppCompatActivity() {
     private fun onViewStateChanged(viewState: EpisodeDetailsViewState) = when (viewState) {
         is EpisodeDetailsViewState.DisplayingContent -> {
             setSupportActionBar(episode_details_toolbar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
             displayEpisodeDetails(
                 viewState.episodeName,
                 viewState.episodeOverview,

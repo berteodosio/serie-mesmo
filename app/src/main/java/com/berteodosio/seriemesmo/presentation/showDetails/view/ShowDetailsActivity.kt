@@ -24,7 +24,7 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_details)
-        setSupportActionBar(show_details_toolbar)
+        configureToolbar()
 
         val showId = intent?.getLongExtra(EXTRA_SHOW_ID, INVALID_SHOW_ID) ?: INVALID_SHOW_ID
 
@@ -35,6 +35,11 @@ class ShowDetailsActivity : BaseAppCompatActivity() {
             )
         }
         viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
+    }
+
+    private fun configureToolbar() {
+        setSupportActionBar(show_details_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun onViewStateChanged(viewState: ShowDetailsViewState) = when (viewState) {

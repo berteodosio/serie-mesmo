@@ -46,6 +46,7 @@ class SeasonDetailsActivity : BaseAppCompatActivity() {
 
     private fun initializeToolbar() {
         setSupportActionBar(season_details_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupToolbarFont()
     }
 
