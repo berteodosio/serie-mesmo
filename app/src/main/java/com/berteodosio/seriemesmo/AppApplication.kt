@@ -16,6 +16,8 @@ class AppApplication : Application(), KodeinAware {
         import(tmdbModule)
         import(repositoryModule)
         import(useCaseModule)
+        import(androidModule(this@AppApplication))
+        import(generalModule)
     }
 
     override fun onCreate() {

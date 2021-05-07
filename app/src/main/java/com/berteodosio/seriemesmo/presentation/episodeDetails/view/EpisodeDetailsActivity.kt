@@ -31,7 +31,8 @@ class EpisodeDetailsActivity : BaseAppCompatActivity() {
                 episodeOverview,
                 episodeCoverUrl,
                 episodeAirDate,
-                episodeNumber
+                episodeNumber,
+                instance()
             )
         }
         viewModel.viewState.observe(this, Observer { onViewStateChanged(it) })
