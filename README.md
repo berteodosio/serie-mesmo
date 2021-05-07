@@ -46,7 +46,7 @@ KodeIn was chosen as the framework to facilitate dependency injection through th
 On the presentation layer, View Models are used to handle data visualization. Activities and Fragments interact with View Models in a reactive way, through the use of LiveData. The presentation layer communicates with the domain layer through UseCases, invoked by View Models.
 
 ### Domain Layer
-This layer contains the "representation" of the business logic/features of the app. This representation exists through the use of UseCases. UseCases should invoke the Domain Layer (through repositories), map "data entities" to entities that are used in the rest of the app and should be kept as simple as possible. All UseCases must have a single public method called execute(). The method can receive as many parameters as needed and its return type should be exclusively one of the following: Single, Completable, or Observable. A single UseCase can use as many repositories are needed to perform its job.
+This layer contains the "representation" of the business logic/features of the app. This representation exists through the use of UseCases. UseCases should invoke the Domain Layer (through repositories), map "data entities" to entities that are used in the rest of the app and should be kept as simple as possible. All UseCases must have a single public method called execute(). The method can receive as many parameters as needed and its return type should be exclusively one of the following: Single, Completable, or Observable. A single UseCase can use as many repositories are needed to perform its job. UseCases make use of mapper functions to properly mapa data objects to domain objects.
 
 ### Data Layer
 Data Layer contains repositories, data types that map to external API types and other things related to the app external communication. All API calls should be dispatched from this layer exclusively. This layer must never be accessed directly from the presentation layer. Repositories should be used by UseCases.
@@ -69,6 +69,11 @@ UseCase tests aimed to check if the expected content was being returned. Success
 * Retrofit
 * Glide
 * Live Events
+
+## Next Steps
+* Cache loaded content to allow offline use of the application
+* Add Pull to Refresh in all screens that load content from an API
+
 
 ## LICENSE
 ```

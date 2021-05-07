@@ -45,7 +45,7 @@ class EpisodeDetailsViewModelTest {
     }
 
     @Test
-    fun `Assert Displaying Content state is the initial state`() {
+    fun `Assert DisplayingContent state is the initial state`() {
         verify(observer).onChanged(
             EpisodeDetailsViewState.DisplayingContent(
                 EPISODE_NAME,

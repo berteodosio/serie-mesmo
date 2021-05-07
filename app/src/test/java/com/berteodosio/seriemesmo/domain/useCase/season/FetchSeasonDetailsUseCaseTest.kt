@@ -17,7 +17,7 @@ class FetchSeasonDetailsUseCaseTest {
     }
 
     @Test
-    fun `GIVEN the Peaky Blinders season 1 showId WHEN I fetch season details THEN the correct information should be returned on the Season object`() {
+    fun `GIVEN the Peaky Blinders season 1 showId WHEN I fetch season details THEN the correct information must be returned on the Season object`() {
         val useCase by kodein.instance<FetchSeasonDetailsUseCase>()
         val season = useCase.execute(60574L, 1).blockingGet()
 

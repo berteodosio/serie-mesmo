@@ -44,8 +44,8 @@ class SeasonDetailsViewModelTest {
     }
 
     @Test
-    fun `Test Fetch Data Success`() {
-        val mockedSeason: Season = mockSeason()
+    fun `Test Fetch Season Details success case`() {
+        val mockedSeason: Season = mock()
         whenever(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
             .thenReturn(Single.just(mockedSeason))
 
@@ -59,7 +59,7 @@ class SeasonDetailsViewModelTest {
     }
 
     @Test
-    fun `Test Fetch Data Error`() {
+    fun `Test Fetch Season Detailes failure case`() {
         val throwable = Throwable("General Error")
         whenever(fetchSeasonDetailsUseCase.execute(SHOW_ID, SEASON_NUMBER))
             .thenReturn(Single.error(throwable))
@@ -72,10 +72,6 @@ class SeasonDetailsViewModelTest {
         verify(viewStateObserver).onChanged(SeasonDetailsViewState.Loading(SEASON_NAME))
         verify(viewStateObserver).onChanged(SeasonDetailsViewState.Error)
     }
-
-    private fun mockSeason(): Season = Season(
-        SEASON_NAME, "https://test.png", 3L, emptyList(), 1L
-    )
 
     private companion object {
         const val SHOW_ID = 60574L

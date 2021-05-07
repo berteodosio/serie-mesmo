@@ -23,7 +23,7 @@ class FetchShowDetailsUseCaseTest {
     }
 
     @Test
-    fun `Assert special season is discarded`() {
+    fun `Test if the special season is discarded`() {
         val show = fetchPeakyBlindersShow()
         assertNull("Special season is being returned", show.seasons.find { it.name.equals("specials", ignoreCase = true) })
     }
