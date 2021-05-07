@@ -74,8 +74,6 @@ class HomeViewModelTest {
         verify(observer).onChanged(ArgumentMatchers.refEq(HomeViewState.Error(exception)))
         verify(observer, Mockito.times(3)).onChanged(captor.capture())
 
-        captor.allValues.forEach { println(it) }
-
         Assert.assertEquals(exception, (captor.allValues.last() as HomeViewState.Error).e)
     }
 

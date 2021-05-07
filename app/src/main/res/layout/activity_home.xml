@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -50,6 +51,7 @@
         android:gravity="center"
         android:text="@string/general_error_text"
         android:textSize="18sp"
+        android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
