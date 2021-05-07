@@ -6,7 +6,7 @@ Among the displayed data, one can find
 * Number of episodes for the season
 * Episodes title, air date, and summary
 
-Debug APK for the application can be found here: TODO() link
+Debug APK for the application can be found here: https://drive.google.com/file/d/1TULmRJB4Z6CWl3-tI5dZ8cVLWzqPu8pJ/view?usp=sharing
 
 ## Building the project
 The app uses the TMDB API Version 3 to fetch content. In order to use this API, one must create an account on the TMDB website and generate a Key for the API. Instructions for generating the API key can be found here: https://developers.themoviedb.org/3/getting-started/authentication#application-authentication
